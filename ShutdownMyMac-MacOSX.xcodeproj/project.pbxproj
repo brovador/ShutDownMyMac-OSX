@@ -13,6 +13,7 @@
 		1CC766B91AA31DC200BF3D63 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CC766B81AA31DC200BF3D63 /* Images.xcassets */; };
 		1CC766BC1AA31DC200BF3D63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CC766BA1AA31DC200BF3D63 /* Main.storyboard */; };
 		1CC766C81AA31DC200BF3D63 /* ShutdownMyMac_MacOSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC766C71AA31DC200BF3D63 /* ShutdownMyMac_MacOSXTests.m */; };
+		1CC766D31AA31E3E00BF3D63 /* SDMMServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC766D21AA31E3E00BF3D63 /* SDMMServiceManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,8 @@
 		1CC766C11AA31DC200BF3D63 /* ShutdownMyMac-MacOSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ShutdownMyMac-MacOSXTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CC766C61AA31DC200BF3D63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CC766C71AA31DC200BF3D63 /* ShutdownMyMac_MacOSXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShutdownMyMac_MacOSXTests.m; sourceTree = "<group>"; };
+		1CC766D11AA31E3E00BF3D63 /* SDMMServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDMMServiceManager.h; sourceTree = "<group>"; };
+		1CC766D21AA31E3E00BF3D63 /* SDMMServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDMMServiceManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +82,7 @@
 		1CC766AD1AA31DC200BF3D63 /* ShutdownMyMac-MacOSX */ = {
 			isa = PBXGroup;
 			children = (
+				1CC766D41AA31E4500BF3D63 /* Services */,
 				1CC766B01AA31DC200BF3D63 /* AppDelegate.h */,
 				1CC766B11AA31DC200BF3D63 /* AppDelegate.m */,
 				1CC766B51AA31DC200BF3D63 /* ViewController.h */,
@@ -114,6 +118,15 @@
 				1CC766C61AA31DC200BF3D63 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1CC766D41AA31E4500BF3D63 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1CC766D11AA31E3E00BF3D63 /* SDMMServiceManager.h */,
+				1CC766D21AA31E3E00BF3D63 /* SDMMServiceManager.m */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,6 +228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CC766D31AA31E3E00BF3D63 /* SDMMServiceManager.m in Sources */,
 				1CC766B71AA31DC200BF3D63 /* ViewController.m in Sources */,
 				1CC766B41AA31DC200BF3D63 /* main.m in Sources */,
 				1CC766B21AA31DC200BF3D63 /* AppDelegate.m in Sources */,

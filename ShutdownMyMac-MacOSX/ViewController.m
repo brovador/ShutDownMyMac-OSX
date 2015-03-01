@@ -7,19 +7,18 @@
 //
 
 #import "ViewController.h"
+#import "SDMMServiceManager.h"
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    // Do any additional setup after loading the view.
+    
+    [[SDMMServiceManager sharedServiceManager] startService];
 }
 
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];
-
-    // Update the view, if already loaded.
 }
 
 @end
