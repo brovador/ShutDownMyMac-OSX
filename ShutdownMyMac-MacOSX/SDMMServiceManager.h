@@ -8,24 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol SDMMServiceManagerDelegate;
-
 @interface SDMMServiceManager : NSObject
 
-@property (nonatomic, weak) NSObject<SDMMServiceManagerDelegate>* delegate;
-
 + (instancetype)sharedServiceManager;
+
 - (void)startService;
 - (void)stopService;
-
-- (void)sendCommand:(NSString*)command;
-
-@end
-
-
-@protocol SDMMServiceManagerDelegate<NSObject>
-
-- (void)serviceManagerInitialized:(SDMMServiceManager*)serviceManager;
-- (void)serviceManagerDidFail:(SDMMServiceManager*)serviceManager;
 
 @end

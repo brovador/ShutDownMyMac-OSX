@@ -11,6 +11,10 @@
 
 #import "SDMMServiceManager.h"
 
+static NSString *const SMSERVICE_COMMAND_SHUTDOWN = @"SHUTDOWN";
+
+static NSString *const ShutdownServiceDomain = @"local.";
+static NSString *const ShutdownServiceType = @"_shutdownmymac._tcp.";
 static SDMMServiceManager* _instance;
 
 void handleConnect(CFSocketRef s, CFSocketCallBackType type, CFDataRef address, const void *data, void *info)
@@ -42,35 +46,58 @@ void handleConnect(CFSocketRef s, CFSocketCallBackType type, CFDataRef address, 
 
 - (void)startService
 {
-    NSNetService *netService = [[NSNetService alloc] initWithDomain:@"local."
-                                                               type:@"_shutdownmymac._tcp."
-                                                               name:@"BrovaMac"
-                                                               port:8010];
+    NSNetService *netService = [[NSNetService alloc] initWithDomain:ShutdownServiceDomain
+                                                               type:ShutdownServiceType
+                                                               name:[[NSHost currentHost] localizedName]];
     [netService setDelegate:self];
     [netService publishWithOptions:NSNetServiceListenForConnections];
+    
+    self.netService = netService;
+}
+
+
+- (void)stopService
+{
+    [self.netService stop];
 }
 
 #pragma mark NSNetServiceDelegate
 
 - (void)netServiceDidPublish:(NSNetService *)sender
 {
-    NSLog(@"SERVICE DID PUBLISH: %@", sender);
+    //TODO notify publish
 }
 
 - (void)netService:(NSNetService *)sender didNotPublish:(NSDictionary *)errorDict
 {
-    NSLog(@"SERVICE DID NOT PUSBLISH: %@", sender);
+    //TODO notify did not publish
 }
 
 - (void)netService:(NSNetService *)sender didAcceptConnectionWithInputStream:(NSInputStream *)inputStream outputStream:(NSOutputStream *)outputStream
 {
-    NSLog(@"SERVICE CONNECTED: %@", sender);
-    
     [inputStream setDelegate:self];
     [inputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     [inputStream open];
     
     self.inputStream = inputStream;
+}
+
+- (void)parseCommand:(NSString*)command
+{
+    NSDictionary *error = nil;
+    if ([SMSERVICE_COMMAND_SHUTDOWN isEqualToString:command]) {
+        [self executeShutdownCommand:&error];
+    }
+    
+    if (error != nil) {
+        NSLog(@"COMMAND ERROR");
+    }
+}
+
+- (void)executeShutdownCommand:(NSDictionary**)error
+{
+    NSAppleScript *appleScript = [[NSAppleScript alloc] initWithSource:@"tell app \"loginwindow\" to «event aevtrsdn»"];
+    [appleScript executeAndReturnError:error];
 }
 
 #pragma mark NSStreamDelegate
@@ -88,8 +115,7 @@ void handleConnect(CFSocketRef s, CFSocketCallBackType type, CFDataRef address, 
             if (len > 0) {
                 NSData *data = [NSData dataWithBytes:buf length:len];
                 NSString *message = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                
-                NSLog(@"Message: %@", message);
+                [self parseCommand:message];
             }
             
             break;

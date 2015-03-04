@@ -418,6 +418,7 @@
 				1CC766CD1AA31DC200BF3D63 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1CC766CE1AA31DC200BF3D63 /* Build configuration list for PBXNativeTarget "ShutdownMyMac-MacOSXTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +427,7 @@
 				1CC766D01AA31DC200BF3D63 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
