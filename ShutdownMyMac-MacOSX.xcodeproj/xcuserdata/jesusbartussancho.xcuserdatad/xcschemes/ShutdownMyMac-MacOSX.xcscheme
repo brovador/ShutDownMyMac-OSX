@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1CC766AA1AA31DC200BF3D63"
-               BuildableName = "ShutdownMyMac-MacOSX.app"
-               BlueprintName = "ShutdownMyMac-MacOSX"
+               BuildableName = "ShutDownMyMac.app"
+               BlueprintName = "ShutDownMyMac"
                ReferencedContainer = "container:ShutdownMyMac-MacOSX.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -57,8 +57,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1CC766AA1AA31DC200BF3D63"
-            BuildableName = "ShutdownMyMac-MacOSX.app"
-            BlueprintName = "ShutdownMyMac-MacOSX"
+            BuildableName = "ShutDownMyMac.app"
+            BlueprintName = "ShutDownMyMac"
             ReferencedContainer = "container:ShutdownMyMac-MacOSX.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -76,8 +76,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1CC766AA1AA31DC200BF3D63"
-            BuildableName = "ShutdownMyMac-MacOSX.app"
-            BlueprintName = "ShutdownMyMac-MacOSX"
+            BuildableName = "ShutDownMyMac.app"
+            BlueprintName = "ShutDownMyMac"
             ReferencedContainer = "container:ShutdownMyMac-MacOSX.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -94,8 +94,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1CC766AA1AA31DC200BF3D63"
-            BuildableName = "ShutdownMyMac-MacOSX.app"
-            BlueprintName = "ShutdownMyMac-MacOSX"
+            BuildableName = "ShutDownMyMac.app"
+            BlueprintName = "ShutDownMyMac"
             ReferencedContainer = "container:ShutdownMyMac-MacOSX.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

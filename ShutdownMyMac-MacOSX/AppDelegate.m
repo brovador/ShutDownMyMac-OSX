@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "SDMMServiceManager.h"
 
 @interface AppDelegate ()
 
@@ -15,11 +16,11 @@
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    // Insert code here to initialize your application
+    [[SDMMServiceManager sharedServiceManager] startService];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
-    // Insert code here to tear down your application
+    [[SDMMServiceManager sharedServiceManager] startService];
 }
 
 @end

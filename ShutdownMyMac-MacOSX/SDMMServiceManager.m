@@ -17,11 +17,6 @@ static NSString *const ShutdownServiceDomain = @"local.";
 static NSString *const ShutdownServiceType = @"_shutdownmymac._tcp.";
 static SDMMServiceManager* _instance;
 
-void handleConnect(CFSocketRef s, CFSocketCallBackType type, CFDataRef address, const void *data, void *info)
-{
-    NSLog(@"SOCKET HANDLE CONNECT");
-}
-
 
 @interface SDMMServiceManager () <NSNetServiceDelegate, NSStreamDelegate>
 

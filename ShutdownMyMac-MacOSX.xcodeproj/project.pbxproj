@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CBF39591AAC3ADA001525D6 /* LSHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CBF39581AAC3ADA001525D6 /* LSHelper.m */; };
 		1CC766B21AA31DC200BF3D63 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC766B11AA31DC200BF3D63 /* AppDelegate.m */; };
 		1CC766B41AA31DC200BF3D63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC766B31AA31DC200BF3D63 /* main.m */; };
 		1CC766B71AA31DC200BF3D63 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC766B61AA31DC200BF3D63 /* ViewController.m */; };
@@ -27,7 +28,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1CC766AB1AA31DC200BF3D63 /* ShutdownMyMac-MacOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ShutdownMyMac-MacOSX.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CBF39571AAC3ADA001525D6 /* LSHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSHelper.h; sourceTree = "<group>"; };
+		1CBF39581AAC3ADA001525D6 /* LSHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSHelper.m; sourceTree = "<group>"; };
+		1CC766AB1AA31DC200BF3D63 /* ShutDownMyMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShutDownMyMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CC766AF1AA31DC200BF3D63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CC766B01AA31DC200BF3D63 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1CC766B11AA31DC200BF3D63 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -73,7 +76,7 @@
 		1CC766AC1AA31DC200BF3D63 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1CC766AB1AA31DC200BF3D63 /* ShutdownMyMac-MacOSX.app */,
+				1CC766AB1AA31DC200BF3D63 /* ShutDownMyMac.app */,
 				1CC766C11AA31DC200BF3D63 /* ShutdownMyMac-MacOSXTests.xctest */,
 			);
 			name = Products;
@@ -90,6 +93,8 @@
 				1CC766B81AA31DC200BF3D63 /* Images.xcassets */,
 				1CC766BA1AA31DC200BF3D63 /* Main.storyboard */,
 				1CC766AE1AA31DC200BF3D63 /* Supporting Files */,
+				1CBF39571AAC3ADA001525D6 /* LSHelper.h */,
+				1CBF39581AAC3ADA001525D6 /* LSHelper.m */,
 			);
 			path = "ShutdownMyMac-MacOSX";
 			sourceTree = "<group>";
@@ -132,9 +137,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1CC766AA1AA31DC200BF3D63 /* ShutdownMyMac-MacOSX */ = {
+		1CC766AA1AA31DC200BF3D63 /* ShutDownMyMac */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1CC766CB1AA31DC200BF3D63 /* Build configuration list for PBXNativeTarget "ShutdownMyMac-MacOSX" */;
+			buildConfigurationList = 1CC766CB1AA31DC200BF3D63 /* Build configuration list for PBXNativeTarget "ShutDownMyMac" */;
 			buildPhases = (
 				1CC766A71AA31DC200BF3D63 /* Sources */,
 				1CC766A81AA31DC200BF3D63 /* Frameworks */,
@@ -144,9 +149,9 @@
 			);
 			dependencies = (
 			);
-			name = "ShutdownMyMac-MacOSX";
+			name = ShutDownMyMac;
 			productName = "ShutdownMyMac-MacOSX";
-			productReference = 1CC766AB1AA31DC200BF3D63 /* ShutdownMyMac-MacOSX.app */;
+			productReference = 1CC766AB1AA31DC200BF3D63 /* ShutDownMyMac.app */;
 			productType = "com.apple.product-type.application";
 		};
 		1CC766C01AA31DC200BF3D63 /* ShutdownMyMac-MacOSXTests */ = {
@@ -198,7 +203,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1CC766AA1AA31DC200BF3D63 /* ShutdownMyMac-MacOSX */,
+				1CC766AA1AA31DC200BF3D63 /* ShutDownMyMac */,
 				1CC766C01AA31DC200BF3D63 /* ShutdownMyMac-MacOSXTests */,
 			);
 		};
@@ -229,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CC766D31AA31E3E00BF3D63 /* SDMMServiceManager.m in Sources */,
+				1CBF39591AAC3ADA001525D6 /* LSHelper.m in Sources */,
 				1CC766B71AA31DC200BF3D63 /* ViewController.m in Sources */,
 				1CC766B41AA31DC200BF3D63 /* main.m in Sources */,
 				1CC766B21AA31DC200BF3D63 /* AppDelegate.m in Sources */,
@@ -248,7 +254,7 @@
 /* Begin PBXTargetDependency section */
 		1CC766C31AA31DC200BF3D63 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1CC766AA1AA31DC200BF3D63 /* ShutdownMyMac-MacOSX */;
+			target = 1CC766AA1AA31DC200BF3D63 /* ShutDownMyMac */;
 			targetProxy = 1CC766C21AA31DC200BF3D63 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -411,7 +417,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1CC766CB1AA31DC200BF3D63 /* Build configuration list for PBXNativeTarget "ShutdownMyMac-MacOSX" */ = {
+		1CC766CB1AA31DC200BF3D63 /* Build configuration list for PBXNativeTarget "ShutDownMyMac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1CC766CC1AA31DC200BF3D63 /* Debug */,

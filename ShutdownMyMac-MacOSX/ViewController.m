@@ -8,17 +8,31 @@
 
 #import "ViewController.h"
 #import "SDMMServiceManager.h"
+#import "LSHelper.h"
+
+@interface ViewController ()
+
+@property (nonatomic, weak) IBOutlet NSButton *btnStartupAtLogin;
+
+@end
 
 @implementation ViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
-    [[SDMMServiceManager sharedServiceManager] startService];
+    if ([LSHelper isLoginItemEnabledForAppPath:[[NSBundle mainBundle] bundlePath]]) {
+        [_btnStartupAtLogin setState:NSOnState];
+    } else {
+        [_btnStartupAtLogin setState:NSOffState];
+    }
 }
 
-- (void)setRepresentedObject:(id)representedObject {
-    [super setRepresentedObject:representedObject];
+- (IBAction)toggleAddToStartupItems:(id)sender
+{
+    NSButton *bt = (NSButton*)sender;
+    [LSHelper enableLoginItem:(bt.state == NSOnState) withAppPath:[[NSBundle mainBundle] bundlePath]];
 }
 
 @end
