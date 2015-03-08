@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
     </dependencies>
@@ -14,15 +14,9 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="ShutdownMyMac" systemMenu="apple" id="uQy-DD-JDr">
                                     <items>
-                                        <menuItem title="About ShutdownMyMac-MacOSX" id="5kV-Vb-QxS">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
                                         <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
                                             <connections>
+                                                <action selector="showPreferencesWindow:" target="Voe-Tx-rLC" id="lyi-jl-FSA"/>
                                                 <segue destination="B8D-0N-5wS" kind="show" id="zbz-Fq-bqZ"/>
                                             </connections>
                                         </menuItem>
@@ -58,6 +52,31 @@
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem title="Window" id="7NR-il-ePo">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Window" systemMenu="window" id="qkD-XE-SbB">
+                                    <items>
+                                        <menuItem title="Minimize" keyEquivalent="m" id="0MS-S0-rUr">
+                                            <connections>
+                                                <action selector="performMiniaturize:" target="Ady-hI-5gd" id="CBh-Mk-A36"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Zoom" id="DP8-TE-LrW">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="performZoom:" target="Ady-hI-5gd" id="eaV-EQ-Bsr"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="Umt-Qv-VbY"/>
+                                        <menuItem title="Bring All to Front" id="D3T-1J-NPm">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="arrangeInFront:" target="Ady-hI-5gd" id="hQK-2y-vW4"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
                             <menuItem title="Help" id="wpr-3q-Mcd">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
@@ -79,53 +98,251 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-89" y="-70"/>
+            <point key="canvasLocation" x="-154.5" y="-466"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                <windowController storyboardIdentifier="WCPreferences" showSeguePresentationStyle="single" id="B8D-0N-5wS" sceneMemberID="viewController">
+                    <window key="window" title="Shutdown My Mac" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="contentRect" x="196" y="240" width="480" height="300"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                     </window>
                     <connections>
-                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
+                        <segue destination="QXo-ZA-413" kind="relationship" relationship="window.shadowedContentViewController" id="Txh-tr-L2x"/>
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="hIz-AP-VOD">
+        <!--Tab View Controller-->
+        <scene sceneID="8ie-g4-Opa">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
-                    <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <tabViewController storyboardIdentifier="VCPreferencesTabs" selectedTabViewItemIndex="0" id="fue-Qv-rLX" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem identifier="" id="rYt-bE-Lu2"/>
+                        <tabViewItem id="zFj-2y-2ys"/>
+                    </tabViewItems>
+                    <tabView key="tabView" type="noTabsBezelBorder" id="Bqs-m5-hOl">
+                        <rect key="frame" x="20" y="20" width="410" height="260"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="system"/>
+                        <tabViewItems/>
+                    </tabView>
+                    <connections>
+                        <segue destination="vSY-la-qx3" kind="relationship" relationship="tabItems" id="PcU-ad-ObL"/>
+                        <segue destination="HeM-Uu-vds" kind="relationship" relationship="tabItems" id="Sm0-hK-Oni"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="bYt-ZD-65d" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="677" y="624"/>
+        </scene>
+        <!--Preferences Root View Controller-->
+        <scene sceneID="Yft-5d-TAP">
+            <objects>
+                <viewController id="QXo-ZA-413" customClass="SDMMPreferencesRootViewController" sceneMemberID="viewController">
+                    <view key="view" id="PDa-B9-yNC">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="340"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xJz-mB-Nt7">
-                                <rect key="frame" x="18" y="234" width="444" height="18"/>
-                                <buttonCell key="cell" type="check" title="Start at login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="WBb-so-6Py">
+                            <customView id="qDZ-br-CuP">
+                                <rect key="frame" x="20" y="20" width="410" height="300"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </customView>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="vPreferencesContainer" destination="qDZ-br-CuP" id="Ey2-BN-Yzg"/>
+                    </connections>
+                </viewController>
+                <customObject id="rTb-I6-8mR" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="677" y="243"/>
+        </scene>
+        <!--General-->
+        <scene sceneID="Bx8-RM-oLz">
+            <objects>
+                <viewController title="General" id="vSY-la-qx3" customClass="SDMMPreferencesGeneralViewController" sceneMemberID="viewController">
+                    <view key="view" id="jzk-yf-WaU">
+                        <rect key="frame" x="0.0" y="0.0" width="410" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="0Ed-tH-8NA">
+                                <rect key="frame" x="145" y="221" width="203" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="If unchecked you need to start manually the service." id="i20-lB-mT4">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" red="0.51471748740000001" green="0.51471748740000001" blue="0.51471748740000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="zoV-40-SsR">
+                                <rect key="frame" x="23" y="189" width="118" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Shutdown Type:" id="BqR-uX-mGN">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="o2X-BY-yVo">
+                                <rect key="frame" x="145" y="126" width="203" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Will ask before performing the shutdown" id="m3d-lT-Bp0">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" red="0.51471748740000001" green="0.51471748740000001" blue="0.51471748740000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <matrix verticalHuggingPriority="750" allowsEmptySelection="NO" autorecalculatesCellSize="YES" id="Cne-R5-YII">
+                                <rect key="frame" x="147" y="168" width="243" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                <size key="cellSize" width="129" height="18"/>
+                                <size key="intercellSpacing" width="4" height="2"/>
+                                <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="1hX-CE-J7V">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <cells>
+                                    <column>
+                                        <buttonCell type="radio" title="ask for shutdown" imagePosition="left" alignment="left" state="on" inset="2" id="4E2-1O-Hnd">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <buttonCell type="radio" title="don't ask" imagePosition="left" alignment="left" tag="1" inset="2" id="15J-oF-Y3Z">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </column>
+                                </cells>
+                                <connections>
+                                    <action selector="toggleShutdownType:" target="vSY-la-qx3" id="6Ia-pM-1b8"/>
+                                </connections>
+                            </matrix>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Tff-pM-Dsp">
+                                <rect key="frame" x="23" y="263" width="118" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Always on:" id="JID-N4-mDt">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button id="MW8-5W-ZNI">
+                                <rect key="frame" x="145" y="261" width="282" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Start on login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="RFG-is-Op4">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="toggleAddToStartupItems:" target="XfG-lQ-9wD" id="JbZ-As-7DW"/>
+                                    <action selector="toggleAddToStartupItems:" target="vSY-la-qx3" id="Pp4-RU-0AX"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="I23-eX-TcH">
+                                <rect key="frame" x="23" y="101" width="118" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Show menu:" id="iDD-7T-NM5">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="JsP-BP-xAo">
+                                <rect key="frame" x="145" y="37" width="203" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Will appear on the menu bar after the next launch" id="7hU-zj-dEO">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" red="0.51471748740000001" green="0.51471748740000001" blue="0.51471748740000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <matrix verticalHuggingPriority="750" allowsEmptySelection="NO" autorecalculatesCellSize="YES" id="eIZ-0I-Llf">
+                                <rect key="frame" x="147" y="79" width="243" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                <size key="cellSize" width="123" height="18"/>
+                                <size key="intercellSpacing" width="4" height="2"/>
+                                <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="5cl-je-602">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <cells>
+                                    <column>
+                                        <buttonCell type="radio" title="on the menu bar" imagePosition="left" alignment="left" state="on" inset="2" id="bRI-Oo-dEy">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <buttonCell type="radio" title="in the dock" imagePosition="left" alignment="left" tag="1" inset="2" id="O0F-FE-mxX">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </column>
+                                </cells>
+                                <connections>
+                                    <action selector="toggleIconPosition:" target="vSY-la-qx3" id="HqK-Hi-auf"/>
+                                </connections>
+                            </matrix>
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="btnStartupAtLogin" destination="xJz-mB-Nt7" id="Sjj-bG-a8U"/>
+                        <outlet property="btnStartupAtLogin" destination="MW8-5W-ZNI" id="U3N-2O-Fu1"/>
+                        <outlet property="matIconPosition" destination="eIZ-0I-Llf" id="BfI-pB-aiv"/>
+                        <outlet property="matShutdownType" destination="Cne-R5-YII" id="v7I-J8-rP8"/>
+                        <outlet property="tfIconPositionDescription" destination="JsP-BP-xAo" id="SYu-KG-JgS"/>
+                        <outlet property="tfShutdownTypeDescription" destination="o2X-BY-yVo" id="LIW-nh-4rr"/>
                     </connections>
                 </viewController>
-                <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="Gkn-Wz-5w6" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="1266" y="457"/>
+        </scene>
+        <!--About-->
+        <scene sceneID="L3r-K4-59v">
+            <objects>
+                <viewController title="About" id="HeM-Uu-vds" sceneMemberID="viewController">
+                    <view key="view" id="klv-uf-W0X">
+                        <rect key="frame" x="0.0" y="0.0" width="410" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="6NS-uR-mxC">
+                                <rect key="frame" x="116" y="70" width="178" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Shutdown My Mac" id="h0e-Y0-lgE">
+                                    <font key="font" metaFont="systemBold"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="3Qb-e0-FQ5">
+                                <rect key="frame" x="145" y="45" width="120" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="v1.0" id="m2g-Hd-nHE">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="jOB-6P-4DI">
+                                <rect key="frame" x="138" y="20" width="135" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Created by: brovador" id="dnB-Pq-Gsr">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="GcF-B8-EVI" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1266" y="824"/>
         </scene>
     </scenes>
 </document>

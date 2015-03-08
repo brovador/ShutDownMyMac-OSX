@@ -8,19 +8,74 @@
 
 #import "AppDelegate.h"
 #import "SDMMServiceManager.h"
+#import "SDMMStatusMenuController.h"
+#import "SDMMUserPreferencesManager.h"
 
 @interface AppDelegate ()
+
+@property (nonatomic, strong) NSWindowController *wcPreferences;
+@property (nonatomic, strong) SDMMStatusMenuController *statusMenuController;
 
 @end
 
 @implementation AppDelegate
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{
+    [self _initializeDockIcon];
+    [self _initializeStatusMenu];
+    
     [[SDMMServiceManager sharedServiceManager] startService];
 }
 
-- (void)applicationWillTerminate:(NSNotification *)aNotification {
-    [[SDMMServiceManager sharedServiceManager] startService];
+
+- (void)applicationWillTerminate:(NSNotification *)aNotification
+{
+    [[SDMMServiceManager sharedServiceManager] stopService];
+}
+
+
+-(BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag
+{
+    BOOL result = YES;
+    if (!flag) {
+        [self showPreferencesWindow:sender];
+        result = NO;
+    }
+    return result;
+}
+
+#pragma mark Public
+
+- (IBAction)showPreferencesWindow:(id)sender
+{
+    if (_wcPreferences == nil) {
+        NSStoryboard *mainStoryBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
+        NSWindowController *wcPreferences = [mainStoryBoard instantiateControllerWithIdentifier:@"WCPreferences"];
+        self.wcPreferences = wcPreferences;
+    }
+    
+    [_wcPreferences showWindow:sender];
+    [[_wcPreferences window] makeKeyAndOrderFront:sender];
+}
+
+
+#pragma mark Private
+
+- (void)_initializeStatusMenu
+{
+    SDMMUserPreferencesManager *prefsManager = [SDMMUserPreferencesManager sharedManager];
+    if (prefsManager.iconPosition == SDMMUserPreferenceIconPositionTopBar) {
+        self.statusMenuController = [SDMMStatusMenuController new];
+    }
+}
+
+- (void)_initializeDockIcon
+{
+    SDMMUserPreferencesManager *prefsManager = [SDMMUserPreferencesManager sharedManager];
+    if (prefsManager.iconPosition == SDMMUserPreferenceIconPositionDock) {
+        [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
+    }
 }
 
 @end

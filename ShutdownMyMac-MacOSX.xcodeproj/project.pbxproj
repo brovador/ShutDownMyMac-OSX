@@ -7,27 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C57437C1AACB7BA0054451B /* SDMMUserPreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C57437B1AACB7BA0054451B /* SDMMUserPreferencesManager.m */; };
+		1C57437E1AACDD5E0054451B /* StatusItemMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C57437D1AACDD5E0054451B /* StatusItemMenu.xib */; };
+		1C5743811AACE87A0054451B /* SDMMStatusMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5743801AACE87A0054451B /* SDMMStatusMenuController.m */; };
 		1CBF39591AAC3ADA001525D6 /* LSHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CBF39581AAC3ADA001525D6 /* LSHelper.m */; };
 		1CC766B21AA31DC200BF3D63 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC766B11AA31DC200BF3D63 /* AppDelegate.m */; };
 		1CC766B41AA31DC200BF3D63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC766B31AA31DC200BF3D63 /* main.m */; };
-		1CC766B71AA31DC200BF3D63 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC766B61AA31DC200BF3D63 /* ViewController.m */; };
+		1CC766B71AA31DC200BF3D63 /* SDMMPreferencesGeneralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC766B61AA31DC200BF3D63 /* SDMMPreferencesGeneralViewController.m */; };
 		1CC766B91AA31DC200BF3D63 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CC766B81AA31DC200BF3D63 /* Images.xcassets */; };
 		1CC766BC1AA31DC200BF3D63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CC766BA1AA31DC200BF3D63 /* Main.storyboard */; };
-		1CC766C81AA31DC200BF3D63 /* ShutdownMyMac_MacOSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC766C71AA31DC200BF3D63 /* ShutdownMyMac_MacOSXTests.m */; };
 		1CC766D31AA31E3E00BF3D63 /* SDMMServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC766D21AA31E3E00BF3D63 /* SDMMServiceManager.m */; };
+		1CE89ED21AAC866800735C82 /* SDMMPreferencesRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE89ED11AAC866800735C82 /* SDMMPreferencesRootViewController.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		1CC766C21AA31DC200BF3D63 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1CC766A31AA31DC200BF3D63 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1CC766AA1AA31DC200BF3D63;
-			remoteInfo = "ShutdownMyMac-MacOSX";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		1C57437A1AACB7BA0054451B /* SDMMUserPreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDMMUserPreferencesManager.h; sourceTree = "<group>"; };
+		1C57437B1AACB7BA0054451B /* SDMMUserPreferencesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDMMUserPreferencesManager.m; sourceTree = "<group>"; };
+		1C57437D1AACDD5E0054451B /* StatusItemMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusItemMenu.xib; sourceTree = "<group>"; };
+		1C57437F1AACE87A0054451B /* SDMMStatusMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDMMStatusMenuController.h; sourceTree = "<group>"; };
+		1C5743801AACE87A0054451B /* SDMMStatusMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDMMStatusMenuController.m; sourceTree = "<group>"; };
 		1CBF39571AAC3ADA001525D6 /* LSHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSHelper.h; sourceTree = "<group>"; };
 		1CBF39581AAC3ADA001525D6 /* LSHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSHelper.m; sourceTree = "<group>"; };
 		1CC766AB1AA31DC200BF3D63 /* ShutDownMyMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShutDownMyMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,15 +33,16 @@
 		1CC766B01AA31DC200BF3D63 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1CC766B11AA31DC200BF3D63 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1CC766B31AA31DC200BF3D63 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		1CC766B51AA31DC200BF3D63 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		1CC766B61AA31DC200BF3D63 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		1CC766B51AA31DC200BF3D63 /* SDMMPreferencesGeneralViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDMMPreferencesGeneralViewController.h; sourceTree = "<group>"; };
+		1CC766B61AA31DC200BF3D63 /* SDMMPreferencesGeneralViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SDMMPreferencesGeneralViewController.m; sourceTree = "<group>"; };
 		1CC766B81AA31DC200BF3D63 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1CC766BB1AA31DC200BF3D63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		1CC766C11AA31DC200BF3D63 /* ShutdownMyMac-MacOSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ShutdownMyMac-MacOSXTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CC766C61AA31DC200BF3D63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CC766C71AA31DC200BF3D63 /* ShutdownMyMac_MacOSXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShutdownMyMac_MacOSXTests.m; sourceTree = "<group>"; };
 		1CC766D11AA31E3E00BF3D63 /* SDMMServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDMMServiceManager.h; sourceTree = "<group>"; };
 		1CC766D21AA31E3E00BF3D63 /* SDMMServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDMMServiceManager.m; sourceTree = "<group>"; };
+		1CE89ED01AAC866800735C82 /* SDMMPreferencesRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDMMPreferencesRootViewController.h; sourceTree = "<group>"; };
+		1CE89ED11AAC866800735C82 /* SDMMPreferencesRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDMMPreferencesRootViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,16 +53,47 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1CC766BE1AA31DC200BF3D63 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C5743771AACB75E0054451B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1C5743821AACE87E0054451B /* StatusMenu */,
+				1C5743781AACB7700054451B /* Preferences */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		1C5743781AACB7700054451B /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				1CC766B51AA31DC200BF3D63 /* SDMMPreferencesGeneralViewController.h */,
+				1CC766B61AA31DC200BF3D63 /* SDMMPreferencesGeneralViewController.m */,
+				1CE89ED01AAC866800735C82 /* SDMMPreferencesRootViewController.h */,
+				1CE89ED11AAC866800735C82 /* SDMMPreferencesRootViewController.m */,
+			);
+			name = Preferences;
+			sourceTree = "<group>";
+		};
+		1C5743791AACB77D0054451B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				1CBF39571AAC3ADA001525D6 /* LSHelper.h */,
+				1CBF39581AAC3ADA001525D6 /* LSHelper.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		1C5743821AACE87E0054451B /* StatusMenu */ = {
+			isa = PBXGroup;
+			children = (
+				1C57437F1AACE87A0054451B /* SDMMStatusMenuController.h */,
+				1C5743801AACE87A0054451B /* SDMMStatusMenuController.m */,
+			);
+			name = StatusMenu;
+			sourceTree = "<group>";
+		};
 		1CC766A21AA31DC200BF3D63 = {
 			isa = PBXGroup;
 			children = (
@@ -77,7 +107,6 @@
 			isa = PBXGroup;
 			children = (
 				1CC766AB1AA31DC200BF3D63 /* ShutDownMyMac.app */,
-				1CC766C11AA31DC200BF3D63 /* ShutdownMyMac-MacOSXTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -85,16 +114,15 @@
 		1CC766AD1AA31DC200BF3D63 /* ShutdownMyMac-MacOSX */ = {
 			isa = PBXGroup;
 			children = (
-				1CC766D41AA31E4500BF3D63 /* Services */,
+				1C5743771AACB75E0054451B /* Views */,
+				1C5743791AACB77D0054451B /* Utils */,
+				1CC766D41AA31E4500BF3D63 /* Managers */,
 				1CC766B01AA31DC200BF3D63 /* AppDelegate.h */,
 				1CC766B11AA31DC200BF3D63 /* AppDelegate.m */,
-				1CC766B51AA31DC200BF3D63 /* ViewController.h */,
-				1CC766B61AA31DC200BF3D63 /* ViewController.m */,
 				1CC766B81AA31DC200BF3D63 /* Images.xcassets */,
 				1CC766BA1AA31DC200BF3D63 /* Main.storyboard */,
+				1C57437D1AACDD5E0054451B /* StatusItemMenu.xib */,
 				1CC766AE1AA31DC200BF3D63 /* Supporting Files */,
-				1CBF39571AAC3ADA001525D6 /* LSHelper.h */,
-				1CBF39581AAC3ADA001525D6 /* LSHelper.m */,
 			);
 			path = "ShutdownMyMac-MacOSX";
 			sourceTree = "<group>";
@@ -125,13 +153,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		1CC766D41AA31E4500BF3D63 /* Services */ = {
+		1CC766D41AA31E4500BF3D63 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 				1CC766D11AA31E3E00BF3D63 /* SDMMServiceManager.h */,
 				1CC766D21AA31E3E00BF3D63 /* SDMMServiceManager.m */,
+				1C57437A1AACB7BA0054451B /* SDMMUserPreferencesManager.h */,
+				1C57437B1AACB7BA0054451B /* SDMMUserPreferencesManager.m */,
 			);
-			name = Services;
+			name = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,24 +184,6 @@
 			productReference = 1CC766AB1AA31DC200BF3D63 /* ShutDownMyMac.app */;
 			productType = "com.apple.product-type.application";
 		};
-		1CC766C01AA31DC200BF3D63 /* ShutdownMyMac-MacOSXTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1CC766CE1AA31DC200BF3D63 /* Build configuration list for PBXNativeTarget "ShutdownMyMac-MacOSXTests" */;
-			buildPhases = (
-				1CC766BD1AA31DC200BF3D63 /* Sources */,
-				1CC766BE1AA31DC200BF3D63 /* Frameworks */,
-				1CC766BF1AA31DC200BF3D63 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				1CC766C31AA31DC200BF3D63 /* PBXTargetDependency */,
-			);
-			name = "ShutdownMyMac-MacOSXTests";
-			productName = "ShutdownMyMac-MacOSXTests";
-			productReference = 1CC766C11AA31DC200BF3D63 /* ShutdownMyMac-MacOSXTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -183,10 +195,6 @@
 				TargetAttributes = {
 					1CC766AA1AA31DC200BF3D63 = {
 						CreatedOnToolsVersion = 6.1;
-					};
-					1CC766C01AA31DC200BF3D63 = {
-						CreatedOnToolsVersion = 6.1;
-						TestTargetID = 1CC766AA1AA31DC200BF3D63;
 					};
 				};
 			};
@@ -204,7 +212,6 @@
 			projectRoot = "";
 			targets = (
 				1CC766AA1AA31DC200BF3D63 /* ShutDownMyMac */,
-				1CC766C01AA31DC200BF3D63 /* ShutdownMyMac-MacOSXTests */,
 			);
 		};
 /* End PBXProject section */
@@ -215,14 +222,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CC766B91AA31DC200BF3D63 /* Images.xcassets in Resources */,
+				1C57437E1AACDD5E0054451B /* StatusItemMenu.xib in Resources */,
 				1CC766BC1AA31DC200BF3D63 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1CC766BF1AA31DC200BF3D63 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,31 +234,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C57437C1AACB7BA0054451B /* SDMMUserPreferencesManager.m in Sources */,
+				1CE89ED21AAC866800735C82 /* SDMMPreferencesRootViewController.m in Sources */,
 				1CC766D31AA31E3E00BF3D63 /* SDMMServiceManager.m in Sources */,
+				1C5743811AACE87A0054451B /* SDMMStatusMenuController.m in Sources */,
 				1CBF39591AAC3ADA001525D6 /* LSHelper.m in Sources */,
-				1CC766B71AA31DC200BF3D63 /* ViewController.m in Sources */,
+				1CC766B71AA31DC200BF3D63 /* SDMMPreferencesGeneralViewController.m in Sources */,
 				1CC766B41AA31DC200BF3D63 /* main.m in Sources */,
 				1CC766B21AA31DC200BF3D63 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1CC766BD1AA31DC200BF3D63 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1CC766C81AA31DC200BF3D63 /* ShutdownMyMac_MacOSXTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		1CC766C31AA31DC200BF3D63 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1CC766AA1AA31DC200BF3D63 /* ShutDownMyMac */;
-			targetProxy = 1CC766C21AA31DC200BF3D63 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1CC766BA1AA31DC200BF3D63 /* Main.storyboard */ = {
@@ -369,42 +357,6 @@
 			};
 			name = Release;
 		};
-		1CC766CF1AA31DC200BF3D63 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "ShutdownMyMac-MacOSXTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShutdownMyMac-MacOSX.app/Contents/MacOS/ShutdownMyMac-MacOSX";
-			};
-			name = Debug;
-		};
-		1CC766D01AA31DC200BF3D63 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "ShutdownMyMac-MacOSXTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShutdownMyMac-MacOSX.app/Contents/MacOS/ShutdownMyMac-MacOSX";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -422,15 +374,6 @@
 			buildConfigurations = (
 				1CC766CC1AA31DC200BF3D63 /* Debug */,
 				1CC766CD1AA31DC200BF3D63 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		1CC766CE1AA31DC200BF3D63 /* Build configuration list for PBXNativeTarget "ShutdownMyMac-MacOSXTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1CC766CF1AA31DC200BF3D63 /* Debug */,
-				1CC766D01AA31DC200BF3D63 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
