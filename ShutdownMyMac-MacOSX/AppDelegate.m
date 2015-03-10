@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "SDMMDockMenuController.h"
 #import "SDMMServiceManager.h"
 #import "SDMMStatusMenuController.h"
 #import "SDMMUserPreferencesManager.h"
@@ -15,6 +16,7 @@
 
 @property (nonatomic, strong) NSWindowController *wcPreferences;
 @property (nonatomic, strong) SDMMStatusMenuController *statusMenuController;
+@property (nonatomic, strong) SDMMDockMenuController *dockMenuController;
 
 @end
 
@@ -45,6 +47,13 @@
     return result;
 }
 
+
+- (NSMenu *)applicationDockMenu:(NSApplication *)sender
+{
+    return _dockMenuController.dockMenu;
+}
+
+
 #pragma mark Public
 
 - (IBAction)showPreferencesWindow:(id)sender
@@ -62,6 +71,17 @@
 
 #pragma mark Private
 
+
+- (void)_initializeDockIcon
+{
+    SDMMUserPreferencesManager *prefsManager = [SDMMUserPreferencesManager sharedManager];
+    if (prefsManager.iconPosition == SDMMUserPreferenceIconPositionDock) {
+        
+        self.dockMenuController = [SDMMDockMenuController new];
+        [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
+    }
+}
+
 - (void)_initializeStatusMenu
 {
     SDMMUserPreferencesManager *prefsManager = [SDMMUserPreferencesManager sharedManager];
@@ -70,12 +90,5 @@
     }
 }
 
-- (void)_initializeDockIcon
-{
-    SDMMUserPreferencesManager *prefsManager = [SDMMUserPreferencesManager sharedManager];
-    if (prefsManager.iconPosition == SDMMUserPreferenceIconPositionDock) {
-        [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
-    }
-}
 
 @end

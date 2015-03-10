@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * const SDMMUserPreferencesManagerUpdatedNotification;
+
 typedef NS_ENUM(NSUInteger, SDMMUserPreferenceIconPosition) {
     SDMMUserPreferenceIconPositionDock,
     SDMMUserPreferenceIconPositionTopBar

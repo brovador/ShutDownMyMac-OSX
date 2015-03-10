@@ -9,6 +9,7 @@
 #import "LSHelper.h"
 #import "SDMMUserPreferencesManager.h"
 
+NSString * const SDMMUserPreferencesManagerUpdatedNotification = @"SDMMUserPreferencesManagerUpdatedNotification";
 
 static NSString * const SDMMUserPreferencesManagerShutdownTypeKey = @"SDMMUserPreferencesManagerShutdownTypeKey";
 static NSString * const SDMMUserPreferencesManagerIconPositionKey = @"SDMMUserPreferencesManagerIconPositionKey";
@@ -59,10 +60,7 @@ static SDMMUserPreferencesManager *sharedInstance;
 {
     if (shutdownType != _shutdownType) {
         _shutdownType = shutdownType;
-        
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        [userDefaults setObject:@(shutdownType) forKey:SDMMUserPreferencesManagerShutdownTypeKey];
-        [userDefaults synchronize];
+        [self _updatePrefsKey:SDMMUserPreferencesManagerShutdownTypeKey withValue:@(shutdownType)];
     }
 }
 
@@ -72,6 +70,7 @@ static SDMMUserPreferencesManager *sharedInstance;
     if (runAtStartup != _runAtStartup) {
         [LSHelper enableLoginItem:runAtStartup withAppPath:[[NSBundle mainBundle] bundlePath]];
         _runAtStartup = [LSHelper isLoginItemEnabledForAppPath:[[NSBundle mainBundle] bundlePath]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:SDMMUserPreferencesManagerUpdatedNotification object:self userInfo:nil];
     }
 }
 
@@ -80,11 +79,19 @@ static SDMMUserPreferencesManager *sharedInstance;
 {
     if (iconPosition != _iconPosition) {
         _iconPosition = iconPosition;
-        
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        [userDefaults setObject:@(iconPosition) forKey:SDMMUserPreferencesManagerIconPositionKey];
-        [userDefaults synchronize];
+        [self _updatePrefsKey:SDMMUserPreferencesManagerIconPositionKey withValue:@(iconPosition)];
     }
+}
+
+
+#pragma mark Private
+
+- (void)_updatePrefsKey:(NSString*)key withValue:(id)value
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:value forKey:key];
+    [userDefaults synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:SDMMUserPreferencesManagerUpdatedNotification object:self userInfo:nil];
 }
 
 

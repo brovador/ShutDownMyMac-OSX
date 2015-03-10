@@ -10,8 +10,8 @@
 #import "SDMMServiceManager.h"
 #import "SDMMUserPreferencesManager.h"
 
-static NSInteger const TagIconPositionTopMenu = 0;
-static NSInteger const TagIconPositionDock = 1;
+static NSInteger const TagIconPositionTopMenu = 1;
+static NSInteger const TagIconPositionDock = 0;
 
 static NSInteger const TagShutdownTypeAsk = 0;
 static NSInteger const TagShutdownTypeNoAsk = 1;
@@ -29,6 +29,25 @@ static NSInteger const TagShutdownTypeNoAsk = 1;
 @end
 
 @implementation SDMMPreferencesGeneralViewController
+
+- (id)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(onUserPreferencesUpdated:)
+                                                     name:SDMMUserPreferencesManagerUpdatedNotification
+                                                   object:nil];
+    }
+    return self;
+}
+
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 
 - (void)viewDidLoad
 {
@@ -58,7 +77,6 @@ static NSInteger const TagShutdownTypeNoAsk = 1;
     } else if (selectedTag == TagIconPositionTopMenu) {
         prefsManager.iconPosition = SDMMUserPreferenceIconPositionTopBar;
     }
-    [self _updateView];
 }
 
 
@@ -74,9 +92,15 @@ static NSInteger const TagShutdownTypeNoAsk = 1;
     } else if (selectedTag == TagShutdownTypeAsk) {
         prefsManager.shutdownType = SDMMUserPreferenceShutdownTypeAsk;
     }
-    [self _updateView];
 }
 
+
+#pragma mark Notifications
+
+- (void)onUserPreferencesUpdated:(NSNotification*)notification
+{
+    [self _updateView];
+}
 
 #pragma mark Private
 

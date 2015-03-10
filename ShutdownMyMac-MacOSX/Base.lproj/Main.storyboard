@@ -106,8 +106,8 @@
                 <windowController storyboardIdentifier="WCPreferences" showSeguePresentationStyle="single" id="B8D-0N-5wS" sceneMemberID="viewController">
                     <window key="window" title="Shutdown My Mac" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="300"/>
+                        <windowPositionMask key="initialPositionMask" topStrut="YES"/>
+                        <rect key="contentRect" x="644" y="510" width="480" height="300"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                     </window>
                     <connections>
@@ -274,11 +274,11 @@
                                 </buttonCell>
                                 <cells>
                                     <column>
-                                        <buttonCell type="radio" title="on the menu bar" imagePosition="left" alignment="left" state="on" inset="2" id="bRI-Oo-dEy">
+                                        <buttonCell type="radio" title="in the dock" imagePosition="left" alignment="left" state="on" inset="2" id="bRI-Oo-dEy">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
-                                        <buttonCell type="radio" title="in the dock" imagePosition="left" alignment="left" tag="1" inset="2" id="O0F-FE-mxX">
+                                        <buttonCell type="radio" title="on the menu bar" imagePosition="left" alignment="left" tag="1" inset="2" id="O0F-FE-mxX">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>

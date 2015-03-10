@@ -10,6 +10,8 @@
 		1C57437C1AACB7BA0054451B /* SDMMUserPreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C57437B1AACB7BA0054451B /* SDMMUserPreferencesManager.m */; };
 		1C57437E1AACDD5E0054451B /* StatusItemMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C57437D1AACDD5E0054451B /* StatusItemMenu.xib */; };
 		1C5743811AACE87A0054451B /* SDMMStatusMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5743801AACE87A0054451B /* SDMMStatusMenuController.m */; };
+		1C909ABC1AAF801D00D985AF /* DockMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C909ABB1AAF801D00D985AF /* DockMenu.xib */; };
+		1C909ABF1AAF810A00D985AF /* SDMMDockMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C909ABE1AAF810A00D985AF /* SDMMDockMenuController.m */; };
 		1CBF39591AAC3ADA001525D6 /* LSHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CBF39581AAC3ADA001525D6 /* LSHelper.m */; };
 		1CC766B21AA31DC200BF3D63 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC766B11AA31DC200BF3D63 /* AppDelegate.m */; };
 		1CC766B41AA31DC200BF3D63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC766B31AA31DC200BF3D63 /* main.m */; };
@@ -26,6 +28,9 @@
 		1C57437D1AACDD5E0054451B /* StatusItemMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusItemMenu.xib; sourceTree = "<group>"; };
 		1C57437F1AACE87A0054451B /* SDMMStatusMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDMMStatusMenuController.h; sourceTree = "<group>"; };
 		1C5743801AACE87A0054451B /* SDMMStatusMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDMMStatusMenuController.m; sourceTree = "<group>"; };
+		1C909ABB1AAF801D00D985AF /* DockMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DockMenu.xib; sourceTree = "<group>"; };
+		1C909ABD1AAF810A00D985AF /* SDMMDockMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDMMDockMenuController.h; sourceTree = "<group>"; };
+		1C909ABE1AAF810A00D985AF /* SDMMDockMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDMMDockMenuController.m; sourceTree = "<group>"; };
 		1CBF39571AAC3ADA001525D6 /* LSHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSHelper.h; sourceTree = "<group>"; };
 		1CBF39581AAC3ADA001525D6 /* LSHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSHelper.m; sourceTree = "<group>"; };
 		1CC766AB1AA31DC200BF3D63 /* ShutDownMyMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShutDownMyMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +95,8 @@
 			children = (
 				1C57437F1AACE87A0054451B /* SDMMStatusMenuController.h */,
 				1C5743801AACE87A0054451B /* SDMMStatusMenuController.m */,
+				1C909ABD1AAF810A00D985AF /* SDMMDockMenuController.h */,
+				1C909ABE1AAF810A00D985AF /* SDMMDockMenuController.m */,
 			);
 			name = StatusMenu;
 			sourceTree = "<group>";
@@ -122,6 +129,7 @@
 				1CC766B81AA31DC200BF3D63 /* Images.xcassets */,
 				1CC766BA1AA31DC200BF3D63 /* Main.storyboard */,
 				1C57437D1AACDD5E0054451B /* StatusItemMenu.xib */,
+				1C909ABB1AAF801D00D985AF /* DockMenu.xib */,
 				1CC766AE1AA31DC200BF3D63 /* Supporting Files */,
 			);
 			path = "ShutdownMyMac-MacOSX";
@@ -224,6 +232,7 @@
 				1CC766B91AA31DC200BF3D63 /* Images.xcassets in Resources */,
 				1C57437E1AACDD5E0054451B /* StatusItemMenu.xib in Resources */,
 				1CC766BC1AA31DC200BF3D63 /* Main.storyboard in Resources */,
+				1C909ABC1AAF801D00D985AF /* DockMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +248,7 @@
 				1CC766D31AA31E3E00BF3D63 /* SDMMServiceManager.m in Sources */,
 				1C5743811AACE87A0054451B /* SDMMStatusMenuController.m in Sources */,
 				1CBF39591AAC3ADA001525D6 /* LSHelper.m in Sources */,
+				1C909ABF1AAF810A00D985AF /* SDMMDockMenuController.m in Sources */,
 				1CC766B71AA31DC200BF3D63 /* SDMMPreferencesGeneralViewController.m in Sources */,
 				1CC766B41AA31DC200BF3D63 /* main.m in Sources */,
 				1CC766B21AA31DC200BF3D63 /* AppDelegate.m in Sources */,

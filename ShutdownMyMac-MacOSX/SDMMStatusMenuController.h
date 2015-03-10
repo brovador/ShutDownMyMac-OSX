@@ -12,6 +12,6 @@
 @interface SDMMStatusMenuController : NSObject
 
 @property (nonatomic, strong) NSStatusItem *statusItem;
-@property (nonatomic, weak) IBOutlet NSMenu *statusItemMenu;
+@property (nonatomic, weak) IBOutlet NSMenu *menu;
 
 @end
