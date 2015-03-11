@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString *const SDMMServiceManagerErrorDomain;
+extern NSInteger const SDMMServiceManagerErrorCodeCommandNotFound;
+extern NSInteger const SDMMServiceManagerErrorCodeCommandError;
+
 @interface SDMMServiceManager : NSObject
 
 + (instancetype)sharedServiceManager;
