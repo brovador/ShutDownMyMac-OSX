@@ -8,6 +8,7 @@
 
 #import "SDMMServiceManager.h"
 #import "SDMMBonjourHelper.h"
+#import "SDMMUserPreferencesManager.h"
 
 static NSString *const SDMMServiceManagerCommandShutdown = @"SHUTDOWN";
 static NSString *const SDMMServiceManagerDomain = @"local.";
@@ -64,7 +65,15 @@ static SDMMServiceManager* _instance;
 - (void)executeShutdownCommand:(NSError**)error
 {
     NSDictionary *errorDict = nil;
-    NSAppleScript *appleScript = [[NSAppleScript alloc] initWithSource:@"tell app \"loginwindow\" to «event aevtrsdn»"];
+    
+    NSString *shutdownCommand = @"";
+    if ([[SDMMUserPreferencesManager sharedManager] shutdownType] == SDMMUserPreferenceShutdownTypeAsk) {
+        shutdownCommand = @"tell app \"loginwindow\" to «event aevtrsdn»";
+    } else {
+        shutdownCommand = @"tell app \"System Events\" to shut down";
+    }
+    
+    NSAppleScript *appleScript = [[NSAppleScript alloc] initWithSource:shutdownCommand];
     [appleScript executeAndReturnError:&errorDict];
     
     if (errorDict != nil) {
