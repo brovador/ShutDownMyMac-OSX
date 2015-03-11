@@ -5,25 +5,26 @@
 //  Created by Jesús on 1/3/15.
 //  Copyright (c) 2015 Jesús. All rights reserved.
 //
-#include <CoreFoundation/CoreFoundation.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
 
 #import "SDMMServiceManager.h"
+#import "SDMMBonjourHelper.h"
 
-static NSString *const SMSERVICE_COMMAND_SHUTDOWN = @"SHUTDOWN";
+static NSString *const SDMMServiceManagerCommandShutdown = @"SHUTDOWN";
+static NSString *const SDMMServiceManagerDomain = @"local.";
+static NSString *const SDMMServiceManagerType = @"_shutdownmymac._tcp.";
 
-static NSString *const ShutdownServiceDomain = @"local.";
-static NSString *const ShutdownServiceType = @"_shutdownmymac._tcp.";
+NSString *const SDMMServiceManagerErrorDomain = @"SDMMServiceManagerErrorDomain";
+NSInteger const SDMMServiceManagerErrorCodeCommandNotFound = 0;
+NSInteger const SDMMServiceManagerErrorCodeCommandError = 1;
+
+NSString *const SDMMServiceManagerErrorUserInfoCommandKey = @"command";
+NSString *const SDMMServiceManagerErrorUserInfoDataKey = @"data";
+
 static SDMMServiceManager* _instance;
 
+@interface SDMMServiceManager () <SDMMBonjourHelperDelegate>
 
-@interface SDMMServiceManager () <NSNetServiceDelegate, NSStreamDelegate>
-
-@property (nonatomic, strong) NSNetService *netService;
-
-@property (nonatomic, strong) NSInputStream *inputStream;
-@property (nonatomic, strong) NSOutputStream *outputStream;
+@property (nonatomic, strong) SDMMBonjourHelper *bonjourHelper;
 
 @end
 
@@ -38,92 +39,64 @@ static SDMMServiceManager* _instance;
     return _instance;
 }
 
+#pragma mark Public
 
 - (void)startService
 {
-    NSNetService *netService = [[NSNetService alloc] initWithDomain:ShutdownServiceDomain
-                                                               type:ShutdownServiceType
-                                                               name:[[NSHost currentHost] localizedName]];
-    [netService setDelegate:self];
-    [netService publishWithOptions:NSNetServiceListenForConnections];
+    SDMMBonjourHelper *bonjourHelper = [SDMMBonjourHelper new];
+    [bonjourHelper setDelegate:self];
+    [bonjourHelper startService:[[NSHost currentHost] localizedName]
+                           type:SDMMServiceManagerType
+                         domain:SDMMServiceManagerDomain];
     
-    self.netService = netService;
+    self.bonjourHelper = bonjourHelper;
 }
 
 
 - (void)stopService
 {
-    [self.netService stop];
+    [self.bonjourHelper stopService];
 }
 
-#pragma mark NSNetServiceDelegate
 
-- (void)netServiceDidPublish:(NSNetService *)sender
-{
-    //TODO notify publish
-}
+#pragma mark Private
 
-- (void)netService:(NSNetService *)sender didNotPublish:(NSDictionary *)errorDict
+- (void)executeShutdownCommand:(NSError**)error
 {
-    //TODO notify did not publish
-}
-
-- (void)netService:(NSNetService *)sender didAcceptConnectionWithInputStream:(NSInputStream *)inputStream outputStream:(NSOutputStream *)outputStream
-{
-    [inputStream setDelegate:self];
-    [inputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-    [inputStream open];
+    NSDictionary *errorDict = nil;
+    NSAppleScript *appleScript = [[NSAppleScript alloc] initWithSource:@"tell app \"loginwindow\" to «event aevtrsdn»"];
+    [appleScript executeAndReturnError:&errorDict];
     
-    self.inputStream = inputStream;
+    if (errorDict != nil) {
+        *error = [NSError errorWithDomain:SDMMServiceManagerErrorDomain
+                                    code:SDMMServiceManagerErrorCodeCommandError
+                                userInfo:@{
+                                           SDMMServiceManagerErrorUserInfoCommandKey:SDMMServiceManagerCommandShutdown,
+                                           SDMMServiceManagerErrorUserInfoDataKey:errorDict
+                                           }];
+    }
 }
 
-- (void)parseCommand:(NSString*)command
+
+#pragma mark SDMMBonjourHelperDelegate
+
+- (void)bonjourHelper:(SDMMBonjourHelper *)bonjourHelper didReceiveCommand:(NSString *)command
 {
-    NSDictionary *error = nil;
-    if ([SMSERVICE_COMMAND_SHUTDOWN isEqualToString:command]) {
+    NSError *error = nil;
+    if ([command isEqualToString:SDMMServiceManagerCommandShutdown]) {
         [self executeShutdownCommand:&error];
+    } else {
+        [NSError errorWithDomain:SDMMServiceManagerErrorDomain
+                            code:SDMMServiceManagerErrorCodeCommandError
+                        userInfo:@{SDMMServiceManagerErrorUserInfoCommandKey : command}];
     }
     
     if (error != nil) {
-        NSLog(@"COMMAND ERROR");
+        NSLog(@"ERROR PARSING COMMAND: %@", command);
     }
 }
 
-- (void)executeShutdownCommand:(NSDictionary**)error
-{
-    NSAppleScript *appleScript = [[NSAppleScript alloc] initWithSource:@"tell app \"loginwindow\" to «event aevtrsdn»"];
-    [appleScript executeAndReturnError:error];
-}
 
-#pragma mark NSStreamDelegate
 
-- (void)stream:(NSStream *)aStream handleEvent:(NSStreamEvent)eventCode
-{
-    switch (eventCode) {
-        case NSStreamEventHasBytesAvailable: {
-            
-            uint8_t buf[1024];
-            NSInteger len = 0;
-            
-            len = [(NSInputStream*)aStream read:buf maxLength:1024];
-            
-            if (len > 0) {
-                NSData *data = [NSData dataWithBytes:buf length:len];
-                NSString *message = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                [self parseCommand:message];
-            }
-            
-            break;
-        }
-        case NSStreamEventEndEncountered:
-            NSLog(@"EVENT END ENCOUNTERED");
-            break;
-        case NSStreamEventErrorOccurred:
-            NSLog(@"EVENT ERROR OCURRED");
-            break;
-        default:
-            break;
-    }
-}
 
 @end
