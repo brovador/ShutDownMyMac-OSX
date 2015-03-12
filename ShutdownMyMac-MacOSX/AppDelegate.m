@@ -28,6 +28,7 @@
     [self _initializeStatusMenu];
     
     [[SDMMServiceManager sharedServiceManager] startService];
+    [self showPreferencesWindow:self];
 }
 
 

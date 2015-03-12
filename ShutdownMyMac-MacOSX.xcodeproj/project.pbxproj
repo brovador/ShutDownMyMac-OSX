@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C279AF41AB2183A0018CA48 /* SDMMPreferencesDevicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C279AF31AB2183A0018CA48 /* SDMMPreferencesDevicesViewController.m */; };
 		1C57437C1AACB7BA0054451B /* SDMMUserPreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C57437B1AACB7BA0054451B /* SDMMUserPreferencesManager.m */; };
 		1C57437E1AACDD5E0054451B /* StatusItemMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C57437D1AACDD5E0054451B /* StatusItemMenu.xib */; };
 		1C5743811AACE87A0054451B /* SDMMStatusMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5743801AACE87A0054451B /* SDMMStatusMenuController.m */; };
@@ -24,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C279AF21AB2183A0018CA48 /* SDMMPreferencesDevicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDMMPreferencesDevicesViewController.h; sourceTree = "<group>"; };
+		1C279AF31AB2183A0018CA48 /* SDMMPreferencesDevicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDMMPreferencesDevicesViewController.m; sourceTree = "<group>"; };
 		1C57437A1AACB7BA0054451B /* SDMMUserPreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDMMUserPreferencesManager.h; sourceTree = "<group>"; };
 		1C57437B1AACB7BA0054451B /* SDMMUserPreferencesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDMMUserPreferencesManager.m; sourceTree = "<group>"; };
 		1C57437D1AACDD5E0054451B /* StatusItemMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusItemMenu.xib; sourceTree = "<group>"; };
@@ -67,7 +70,7 @@
 		1C5743771AACB75E0054451B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1C5743821AACE87E0054451B /* StatusMenu */,
+				1C5743821AACE87E0054451B /* Menus */,
 				1C5743781AACB7700054451B /* Preferences */,
 			);
 			name = Views;
@@ -80,6 +83,8 @@
 				1CC766B61AA31DC200BF3D63 /* SDMMPreferencesGeneralViewController.m */,
 				1CE89ED01AAC866800735C82 /* SDMMPreferencesRootViewController.h */,
 				1CE89ED11AAC866800735C82 /* SDMMPreferencesRootViewController.m */,
+				1C279AF21AB2183A0018CA48 /* SDMMPreferencesDevicesViewController.h */,
+				1C279AF31AB2183A0018CA48 /* SDMMPreferencesDevicesViewController.m */,
 			);
 			name = Preferences;
 			sourceTree = "<group>";
@@ -95,7 +100,7 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
-		1C5743821AACE87E0054451B /* StatusMenu */ = {
+		1C5743821AACE87E0054451B /* Menus */ = {
 			isa = PBXGroup;
 			children = (
 				1C57437F1AACE87A0054451B /* SDMMStatusMenuController.h */,
@@ -103,7 +108,7 @@
 				1C909ABD1AAF810A00D985AF /* SDMMDockMenuController.h */,
 				1C909ABE1AAF810A00D985AF /* SDMMDockMenuController.m */,
 			);
-			name = StatusMenu;
+			name = Menus;
 			sourceTree = "<group>";
 		};
 		1CC766A21AA31DC200BF3D63 = {
@@ -256,6 +261,7 @@
 				1C909ABF1AAF810A00D985AF /* SDMMDockMenuController.m in Sources */,
 				1C6DF9251AB0D824000CC7C5 /* SDMMBonjourHelper.m in Sources */,
 				1CC766B71AA31DC200BF3D63 /* SDMMPreferencesGeneralViewController.m in Sources */,
+				1C279AF41AB2183A0018CA48 /* SDMMPreferencesDevicesViewController.m in Sources */,
 				1CC766B41AA31DC200BF3D63 /* main.m in Sources */,
 				1CC766B21AA31DC200BF3D63 /* AppDelegate.m in Sources */,
 			);
