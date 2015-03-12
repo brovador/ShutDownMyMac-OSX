@@ -64,6 +64,7 @@
         self.wcPreferences = wcPreferences;
     }
     
+    [NSApp activateIgnoringOtherApps:YES];
     [_wcPreferences showWindow:sender];
     [[_wcPreferences window] makeKeyAndOrderFront:sender];
 }

@@ -32,7 +32,7 @@
         self.topNibObjects = topNibObjects;
         
         self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
-        _statusItem.title = @"ShutdownMyMac";
+        _statusItem.title = @"SMM";
         [_statusItem setMenu:_menu];
     }
     return self;
