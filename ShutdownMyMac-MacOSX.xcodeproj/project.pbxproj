@@ -14,6 +14,7 @@
 		1C6DF9251AB0D824000CC7C5 /* SDMMBonjourHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6DF9241AB0D824000CC7C5 /* SDMMBonjourHelper.m */; };
 		1C909ABC1AAF801D00D985AF /* DockMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C909ABB1AAF801D00D985AF /* DockMenu.xib */; };
 		1C909ABF1AAF810A00D985AF /* SDMMDockMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C909ABE1AAF810A00D985AF /* SDMMDockMenuController.m */; };
+		1CB225321AB42C8800E5BC5B /* SDMMBonjourHelperChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB225311AB42C8800E5BC5B /* SDMMBonjourHelperChannel.m */; };
 		1CBF39591AAC3ADA001525D6 /* LSHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CBF39581AAC3ADA001525D6 /* LSHelper.m */; };
 		1CC766B21AA31DC200BF3D63 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC766B11AA31DC200BF3D63 /* AppDelegate.m */; };
 		1CC766B41AA31DC200BF3D63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC766B31AA31DC200BF3D63 /* main.m */; };
@@ -37,6 +38,8 @@
 		1C909ABB1AAF801D00D985AF /* DockMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DockMenu.xib; sourceTree = "<group>"; };
 		1C909ABD1AAF810A00D985AF /* SDMMDockMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDMMDockMenuController.h; sourceTree = "<group>"; };
 		1C909ABE1AAF810A00D985AF /* SDMMDockMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDMMDockMenuController.m; sourceTree = "<group>"; };
+		1CB225301AB42C8800E5BC5B /* SDMMBonjourHelperChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDMMBonjourHelperChannel.h; sourceTree = "<group>"; };
+		1CB225311AB42C8800E5BC5B /* SDMMBonjourHelperChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDMMBonjourHelperChannel.m; sourceTree = "<group>"; };
 		1CBF39571AAC3ADA001525D6 /* LSHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSHelper.h; sourceTree = "<group>"; };
 		1CBF39581AAC3ADA001525D6 /* LSHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSHelper.m; sourceTree = "<group>"; };
 		1CC766AB1AA31DC200BF3D63 /* ShutDownMyMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShutDownMyMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +95,8 @@
 		1C5743791AACB77D0054451B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				1CB225301AB42C8800E5BC5B /* SDMMBonjourHelperChannel.h */,
+				1CB225311AB42C8800E5BC5B /* SDMMBonjourHelperChannel.m */,
 				1C6DF9231AB0D824000CC7C5 /* SDMMBonjourHelper.h */,
 				1C6DF9241AB0D824000CC7C5 /* SDMMBonjourHelper.m */,
 				1CBF39571AAC3ADA001525D6 /* LSHelper.h */,
@@ -259,6 +264,7 @@
 				1C5743811AACE87A0054451B /* SDMMStatusMenuController.m in Sources */,
 				1CBF39591AAC3ADA001525D6 /* LSHelper.m in Sources */,
 				1C909ABF1AAF810A00D985AF /* SDMMDockMenuController.m in Sources */,
+				1CB225321AB42C8800E5BC5B /* SDMMBonjourHelperChannel.m in Sources */,
 				1C6DF9251AB0D824000CC7C5 /* SDMMBonjourHelper.m in Sources */,
 				1CC766B71AA31DC200BF3D63 /* SDMMPreferencesGeneralViewController.m in Sources */,
 				1C279AF41AB2183A0018CA48 /* SDMMPreferencesDevicesViewController.m in Sources */,

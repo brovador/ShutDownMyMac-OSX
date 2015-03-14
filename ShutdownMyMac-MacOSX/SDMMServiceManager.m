@@ -10,7 +10,11 @@
 #import "SDMMBonjourHelper.h"
 #import "SDMMUserPreferencesManager.h"
 
+static NSString *const SDMMServiceManagerCommandConnect = @"CONNECT";
+static NSString *const SDMMServiceManagerCommandPair = @"PAIR";
 static NSString *const SDMMServiceManagerCommandShutdown = @"SHUTDOWN";
+
+
 static NSString *const SDMMServiceManagerDomain = @"local.";
 static NSString *const SDMMServiceManagerType = @"_shutdownmymac._tcp.";
 
@@ -87,11 +91,24 @@ static SDMMServiceManager* _instance;
 }
 
 
+- (void)executeConnectCommand:(NSError*)error
+{
+    
+}
+
+
+- (void)executePairCommand:(NSError*)error
+{
+    
+}
+
+
 #pragma mark SDMMBonjourHelperDelegate
 
-- (void)bonjourHelper:(SDMMBonjourHelper *)bonjourHelper didReceiveCommand:(NSString *)command
+- (void)bonjourHelper:(SDMMBonjourHelper *)bonjourHelper didReceiveCommand:(NSString *)command fromChannel:(SDMMBonjourHelperChannel *)channel
 {
     NSError *error = nil;
+    
     if ([command isEqualToString:SDMMServiceManagerCommandShutdown]) {
         [self executeShutdownCommand:&error];
     } else {
