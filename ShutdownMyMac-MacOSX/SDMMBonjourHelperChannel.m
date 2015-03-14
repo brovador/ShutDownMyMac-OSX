@@ -63,6 +63,12 @@ NSString * const SDMMBonjourHelperCommandNotificationKey = @"SDMMBonjourHelperCo
 
 #pragma mark Public
 
+- (NSString*)deviceName
+{
+    return _netService.name;
+}
+
+
 - (void)sendCommand:(NSString *)command
 {
     if ([self _isWriteChannel]) {

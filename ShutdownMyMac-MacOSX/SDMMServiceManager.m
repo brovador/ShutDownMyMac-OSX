@@ -6,12 +6,12 @@
 //  Copyright (c) 2015 Jesús. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "SDMMServiceManager.h"
 #import "SDMMBonjourHelper.h"
 #import "SDMMBonjourHelperChannel.h"
 #import "SDMMUserPreferencesManager.h"
 
-static NSString *const SDMMServiceManagerCommandConnect = @"CONNECT";
 static NSString *const SDMMServiceManagerCommandPair = @"PAIR";
 static NSString *const SDMMServiceManagerCommandShutdown = @"SHUTDOWN";
 
@@ -34,9 +34,6 @@ static SDMMServiceManager* _instance;
 
 @property (nonatomic, strong) SDMMBonjourHelper *bonjourHelper;
 
-#warning TODO: temporary check, move to preferences
-@property (nonatomic, strong) NSMutableArray *pairedServices;
-
 @end
 
 @implementation SDMMServiceManager
@@ -51,15 +48,6 @@ static SDMMServiceManager* _instance;
 }
 
 #pragma mark Public
-
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        self.pairedServices = [NSMutableArray new];
-    }
-    return self;
-}
 
 - (void)startService
 {
@@ -106,22 +94,21 @@ static SDMMServiceManager* _instance;
 }
 
 
-- (void)executeConnectCommand:(SDMMBonjourHelperChannel*)channel error:(NSError**)error
-{
-    BOOL paired = [_pairedServices containsObject:channel];
-    if (!paired) {
-        [channel sendCommand:SDMMServiceManagerResponseFail];
-    } else {
-        [channel sendCommand:SDMMServiceManagerResponseSuccess];
-    }
-}
-
-
 - (void)executePairCommand:(SDMMBonjourHelperChannel*)channel error:(NSError**)error
 {
-    if (![_pairedServices containsObject:channel]) {
-        [_pairedServices addObject:channel];
+    SDMMUserPreferencesManager *prefsMgr = [SDMMUserPreferencesManager sharedManager];
+    NSString *deviceName = channel.deviceName;
+    
+    if ([[prefsMgr pairedDevices] containsObject:deviceName]) {
         [channel sendCommand:SDMMServiceManagerResponseSuccess];
+    } else {
+        [[AppDelegate currentAppDelegate]
+         showPairingAlertForDevice:channel.deviceName onAccept:^{
+             [prefsMgr addDevice:deviceName];
+             [channel sendCommand:SDMMServiceManagerResponseSuccess];
+         } onCancel:^{
+             [channel sendCommand:SDMMServiceManagerResponseFail];
+         }];
     }
 }
 
@@ -134,8 +121,6 @@ static SDMMServiceManager* _instance;
     
     if ([command isEqualToString:SDMMServiceManagerCommandShutdown]) {
         [self executeShutdownCommand:&error];
-    } else if ([command isEqualToString:SDMMServiceManagerCommandConnect]) {
-        [self executeConnectCommand:channel error:&error];
     } else if ([command isEqualToString:SDMMServiceManagerCommandPair]) {
         [self executePairCommand:channel error:&error];
     } else {
