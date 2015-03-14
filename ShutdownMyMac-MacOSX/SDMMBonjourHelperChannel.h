@@ -25,6 +25,8 @@ typedef NS_ENUM(NSInteger, SDMMBonjourHelperChannelType) {
 @interface SDMMBonjourHelperChannel : NSObject
 
 - (instancetype)initWithNetService:(NSNetService*)netService inputStream:(NSInputStream*)inputStream outputStream:(NSOutputStream*)outputStream type:(SDMMBonjourHelperChannelType)type;
+
 - (void)sendCommand:(NSString*)command;
+- (void)disconnect;
 
 @end

@@ -86,7 +86,7 @@
 
 - (void)onChannelConnectionStart:(NSNotification*)notification
 {
-    SDMMBonjourHelperChannel *channel = notification.object;
+    //SDMMBonjourHelperChannel *channel = notification.object;
     //TODO: move as available channel?
 }
 
