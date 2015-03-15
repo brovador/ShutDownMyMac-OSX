@@ -33,7 +33,6 @@
     [self _initializeStatusMenu];
     
     [[SDMMServiceManager sharedServiceManager] startService];
-    [self showPreferencesWindow:self];
 }
 
 
@@ -89,6 +88,7 @@
     [alert setAlertStyle:NSAlertFirstButtonReturn];
     [alert setDelegate:self];
     
+    [NSApp activateIgnoringOtherApps:YES];
     NSModalResponse modalResponse = [alert runModal];
     
     if (modalResponse == NSAlertFirstButtonReturn && onAccept != NULL) {

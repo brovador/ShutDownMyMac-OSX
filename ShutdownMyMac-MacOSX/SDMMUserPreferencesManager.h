@@ -31,5 +31,6 @@ typedef NS_ENUM(NSUInteger, SDMMUserPreferenceShutdownType) {
 
 - (void)addDevice:(NSString*)name;
 - (void)removeDevice:(NSString*)name;
+- (BOOL)isValidDevice:(NSString*)name;
 
 @end

@@ -24,7 +24,8 @@ typedef NS_ENUM(NSInteger, SDMMBonjourHelperChannelType) {
 
 @interface SDMMBonjourHelperChannel : NSObject
 
-@property (nonatomic, readonly) NSString *deviceName;
+@property (nonatomic, assign) BOOL paired;
+@property (nonatomic, copy) NSString *deviceName;
 
 - (instancetype)initWithNetService:(NSNetService*)netService inputStream:(NSInputStream*)inputStream outputStream:(NSOutputStream*)outputStream type:(SDMMBonjourHelperChannelType)type;
 

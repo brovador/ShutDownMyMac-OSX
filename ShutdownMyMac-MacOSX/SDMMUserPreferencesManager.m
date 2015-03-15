@@ -89,6 +89,12 @@ static SDMMUserPreferencesManager *sharedInstance;
 }
 
 
+- (BOOL)isValidDevice:(NSString *)name
+{
+    return [_mutablePairedDevices containsObject:name];
+}
+
+
 - (void)setShutdownType:(SDMMUserPreferenceShutdownType)shutdownType
 {
     if (shutdownType != _shutdownType) {
