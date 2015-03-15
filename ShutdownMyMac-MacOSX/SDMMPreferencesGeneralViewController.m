@@ -18,11 +18,19 @@ static NSInteger const TagShutdownTypeNoAsk = 1;
 
 @interface SDMMPreferencesGeneralViewController ()
 
+@property (nonatomic, weak) IBOutlet NSTextField *tfStartOnLoginLeft;
+@property (nonatomic, weak) IBOutlet NSTextField *tfStartOnLoginDescription;
 @property (nonatomic, weak) IBOutlet NSButton *btnStartupAtLogin;
 
+@property (nonatomic, weak) IBOutlet NSTextField *tfIconPositionLeft;
+@property (nonatomic, weak) IBOutlet NSButtonCell *bcIconPositionDock;
+@property (nonatomic, weak) IBOutlet NSButtonCell *bcIconPositionMenuBar;
 @property (nonatomic, weak) IBOutlet NSMatrix *matIconPosition;
 @property (nonatomic, weak) IBOutlet NSTextField *tfIconPositionDescription;
 
+@property (nonatomic, weak) IBOutlet NSTextField *tfShutdownTypeLeft;
+@property (nonatomic, weak) IBOutlet NSButtonCell *bcShutdownTypeAsk;
+@property (nonatomic, weak) IBOutlet NSButtonCell *bcShutdownTypeNoAsk;
 @property (nonatomic, weak) IBOutlet NSMatrix *matShutdownType;
 @property (nonatomic, weak) IBOutlet NSTextField *tfShutdownTypeDescription;
 
@@ -34,6 +42,9 @@ static NSInteger const TagShutdownTypeNoAsk = 1;
 {
     self = [super initWithCoder:coder];
     if (self) {
+        
+        self.title = NSLocalizedString(@"TAB_GENERAL", @"");
+        
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(onUserPreferencesUpdated:)
                                                      name:SDMMUserPreferencesManagerUpdatedNotification
@@ -52,6 +63,8 @@ static NSInteger const TagShutdownTypeNoAsk = 1;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self _localizeView];
     [self _updateView];
 }
 
@@ -103,6 +116,21 @@ static NSInteger const TagShutdownTypeNoAsk = 1;
 }
 
 #pragma mark Private
+
+- (void)_localizeView
+{
+    [_tfStartOnLoginLeft setStringValue:NSLocalizedString(@"START_ON_LOGIN_LEFT", @"")];
+    [_btnStartupAtLogin setTitle:NSLocalizedString(@"START_ON_LOGIN_RIGHT", @"")];
+    [_tfStartOnLoginDescription setStringValue:NSLocalizedString(@"START_ON_LOGIN_DESCRIPTION", @"")];
+    
+    [_tfIconPositionLeft setStringValue:NSLocalizedString(@"ICON_POSITION_LEFT", @"")];
+    [_bcIconPositionDock setTitle:NSLocalizedString(@"ICON_POSITION_DOCK", @"")];
+    [_bcIconPositionMenuBar setTitle:NSLocalizedString(@"ICON_POSITION_MENU_BAR", @"")];
+    
+    [_tfShutdownTypeLeft setStringValue:NSLocalizedString(@"SHUTDOWN_TYPE_LEFT", @"")];
+    [_bcShutdownTypeAsk setTitle:NSLocalizedString(@"SHUTDOWN_TYPE_ASK", @"")];
+    [_bcShutdownTypeNoAsk setTitle:NSLocalizedString(@"SHUTDOWN_TYPE_NO_ASK", @"")];
+}
 
 - (void)_updateView
 {

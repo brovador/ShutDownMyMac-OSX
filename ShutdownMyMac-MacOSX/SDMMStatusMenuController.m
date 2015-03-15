@@ -15,8 +15,11 @@
 @property (nonatomic, strong) NSArray *topNibObjects;
 
 @property (nonatomic, weak) IBOutlet NSMenuItem *miLaunchAtLogin;
+@property (nonatomic, weak) IBOutlet NSMenuItem *miShutdownType;
 @property (nonatomic, weak) IBOutlet NSMenuItem *miShutdownTypeAsk;
 @property (nonatomic, weak) IBOutlet NSMenuItem *miShutdownTypeNoAsk;
+@property (nonatomic, weak) IBOutlet NSMenuItem *miPreferences;
+@property (nonatomic, weak) IBOutlet NSMenuItem *miQuit;
 
 @end
 
@@ -34,8 +37,22 @@
         self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
         _statusItem.title = @"SMM";
         [_statusItem setMenu:_menu];
+        
+        [self _localizeView];
     }
     return self;
+}
+
+#pragma mark Private
+
+- (void)_localizeView
+{
+    [_miLaunchAtLogin setTitle:NSLocalizedString(@"MI_LAUNCH_AT_LOGIN", @"")];
+    [_miShutdownType setTitle:NSLocalizedString(@"MI_SHUTDOWN_TYPE", @"")];
+    [_miShutdownTypeAsk setTitle:NSLocalizedString(@"MI_SHUTDOWN_TYPE_ASK", @"")];
+    [_miShutdownTypeNoAsk setTitle:NSLocalizedString(@"MI_SHUTDOWN_TYPE_NO_ASK", @"")];
+    [_miPreferences setTitle:NSLocalizedString(@"MI_PREFERENCES", @"")];
+    [_miQuit setTitle:NSLocalizedString(@"MI_QUIT", @"")];
 }
 
 #pragma mark IBActions

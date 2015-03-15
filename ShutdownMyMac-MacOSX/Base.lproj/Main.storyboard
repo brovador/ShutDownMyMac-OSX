@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6751"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -103,7 +103,7 @@
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController storyboardIdentifier="WCPreferences" showSeguePresentationStyle="single" id="B8D-0N-5wS" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="WCPreferences" showSeguePresentationStyle="single" id="B8D-0N-5wS" customClass="SDMMPreferencesWindowController" sceneMemberID="viewController">
                     <window key="window" title="Shutdown My Mac" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" topStrut="YES"/>
@@ -293,11 +293,19 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="bcIconPositionDock" destination="bRI-Oo-dEy" id="J0T-rk-g2F"/>
+                        <outlet property="bcIconPositionMenuBar" destination="O0F-FE-mxX" id="jvr-2V-bku"/>
+                        <outlet property="bcShutdownTypeAsk" destination="4E2-1O-Hnd" id="9dS-KQ-zKd"/>
+                        <outlet property="bcShutdownTypeNoAsk" destination="15J-oF-Y3Z" id="GQL-cj-1w1"/>
                         <outlet property="btnStartupAtLogin" destination="MW8-5W-ZNI" id="U3N-2O-Fu1"/>
                         <outlet property="matIconPosition" destination="eIZ-0I-Llf" id="BfI-pB-aiv"/>
                         <outlet property="matShutdownType" destination="Cne-R5-YII" id="v7I-J8-rP8"/>
                         <outlet property="tfIconPositionDescription" destination="JsP-BP-xAo" id="SYu-KG-JgS"/>
+                        <outlet property="tfIconPositionLeft" destination="I23-eX-TcH" id="H0G-4X-U1u"/>
                         <outlet property="tfShutdownTypeDescription" destination="o2X-BY-yVo" id="LIW-nh-4rr"/>
+                        <outlet property="tfShutdownTypeLeft" destination="zoV-40-SsR" id="cA7-8C-El6"/>
+                        <outlet property="tfStartOnLoginDescription" destination="0Ed-tH-8NA" id="ETc-fh-lyY"/>
+                        <outlet property="tfStartOnLoginLeft" destination="Tff-pM-Dsp" id="vyy-mn-2wX"/>
                     </connections>
                 </viewController>
                 <customObject id="Gkn-Wz-5w6" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -307,7 +315,7 @@
         <!--About-->
         <scene sceneID="L3r-K4-59v">
             <objects>
-                <viewController title="About" id="HeM-Uu-vds" sceneMemberID="viewController">
+                <viewController title="About" id="HeM-Uu-vds" customClass="SDMMPreferencesAboutViewController" sceneMemberID="viewController">
                     <view key="view" id="klv-uf-W0X">
                         <rect key="frame" x="0.0" y="0.0" width="410" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -341,6 +349,11 @@
                             </textField>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="tfAppName" destination="6NS-uR-mxC" id="z6o-xD-4ZM"/>
+                        <outlet property="tfCreatedBy" destination="jOB-6P-4DI" id="Tis-2x-uaL"/>
+                        <outlet property="tfVersion" destination="3Qb-e0-FQ5" id="yP6-eG-yQe"/>
+                    </connections>
                 </viewController>
                 <customObject id="GcF-B8-EVI" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -362,7 +375,6 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="slA-bp-aO1" viewBased="YES" id="wLu-eo-Iws">
-                                            <rect key="frame" x="0.0" y="0.0" width="238" height="134"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -410,11 +422,11 @@
                                     </subviews>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="HOD-iF-3Vh">
-                                    <rect key="frame" x="1" y="117.47454792261124" width="236.84038162231445" height="16"/>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="HOD-iF-3Vh">
+                                    <rect key="frame" x="1" y="117.47454792261124" width="237" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="SsG-VQ-PMa">
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="SsG-VQ-PMa">
                                     <rect key="frame" x="224" y="17" width="15" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
