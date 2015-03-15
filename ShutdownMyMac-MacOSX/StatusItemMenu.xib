@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6751" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6751"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SDMMStatusMenuController">
             <connections>
                 <outlet property="menu" destination="er2-gj-OfJ" id="sUv-HM-PiR"/>
                 <outlet property="miLaunchAtLogin" destination="Wjl-2W-ekb" id="Qhx-x5-y0E"/>
+                <outlet property="miPreferences" destination="YKg-OT-Cvb" id="hnK-Sz-Sgd"/>
+                <outlet property="miQuit" destination="MAO-Ng-nvH" id="ln1-GP-udJ"/>
+                <outlet property="miShutdownType" destination="Xda-iw-SOI" id="Q2t-oN-VAN"/>
                 <outlet property="miShutdownTypeAsk" destination="GOB-QP-nfw" id="DnQ-r9-EUZ"/>
                 <outlet property="miShutdownTypeNoAsk" destination="PNh-J3-gxv" id="8Zp-If-Nbz"/>
             </connections>

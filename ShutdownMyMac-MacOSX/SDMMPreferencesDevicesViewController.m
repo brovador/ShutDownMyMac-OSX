@@ -19,6 +19,15 @@
 
 @implementation SDMMPreferencesDevicesViewController
 
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self setTitle:NSLocalizedString(@"TAB_DEVICES", @"")];
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -27,6 +36,8 @@
                                              selector:@selector(onUserPreferencesUpdated:)
                                                  name:SDMMUserPreferencesManagerUpdatedNotification
                                                object:nil];
+    
+    [self _localizeView];
     [self _updateView];
 }
 
@@ -36,6 +47,11 @@
 {
     NSIndexSet *selectedIndexes = [_tblDevices selectedRowIndexes];
     _btnRemoveSelected.enabled = (selectedIndexes.count > 0);
+}
+
+- (void)_localizeView
+{
+    [_btnRemoveSelected setTitle:NSLocalizedString(@"BTN_REMOVE_SELECTED", @"")];
 }
 
 #pragma mark NSTableViewDelegate
