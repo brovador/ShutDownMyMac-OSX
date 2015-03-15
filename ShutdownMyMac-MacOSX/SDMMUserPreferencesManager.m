@@ -13,8 +13,15 @@ NSString * const SDMMUserPreferencesManagerUpdatedNotification = @"SDMMUserPrefe
 
 static NSString * const SDMMUserPreferencesManagerShutdownTypeKey = @"SDMMUserPreferencesManagerShutdownTypeKey";
 static NSString * const SDMMUserPreferencesManagerIconPositionKey = @"SDMMUserPreferencesManagerIconPositionKey";
+static NSString * const SDMMUserPreferencesManagerPairedDevicesKey = @"SDMMUserPreferencesManagerPairedDevicesKey";
 
 static SDMMUserPreferencesManager *sharedInstance;
+
+@interface SDMMUserPreferencesManager()
+
+@property (nonatomic, strong) NSMutableArray *mutablePairedDevices;
+
+@end
 
 @implementation SDMMUserPreferencesManager
 
@@ -50,9 +57,41 @@ static SDMMUserPreferencesManager *sharedInstance;
             self.iconPosition = SDMMUserPreferenceIconPositionDock;
         }
         
+        storedKey = [userDefaults objectForKey:SDMMUserPreferencesManagerPairedDevicesKey];
+        if (storedKey != nil) {
+            self.mutablePairedDevices = [NSMutableArray arrayWithArray:storedKey];
+        } else {
+            self.mutablePairedDevices = [NSMutableArray array];
+        }
+        
         self.runAtStartup = [LSHelper isLoginItemEnabledForAppPath:[[NSBundle mainBundle] bundlePath]];
     }
     return self;
+}
+
+- (NSArray*)pairedDevices
+{
+    return [NSArray arrayWithArray:_mutablePairedDevices];
+}
+
+
+- (void)addDevice:(NSString *)name
+{
+    [_mutablePairedDevices addObject:name];
+    [self _updatePrefsKey:SDMMUserPreferencesManagerPairedDevicesKey withValue:_mutablePairedDevices];
+}
+
+
+- (void)removeDevice:(NSString *)name
+{
+    [_mutablePairedDevices removeObject:name];
+    [self _updatePrefsKey:SDMMUserPreferencesManagerPairedDevicesKey withValue:_mutablePairedDevices];
+}
+
+
+- (BOOL)isValidDevice:(NSString *)name
+{
+    return [_mutablePairedDevices containsObject:name];
 }
 
 

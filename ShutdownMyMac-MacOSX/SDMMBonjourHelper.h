@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+@class SDMMBonjourHelperChannel;
 @protocol SDMMBonjourHelperDelegate;
 
 @interface SDMMBonjourHelper : NSObject
@@ -17,8 +18,7 @@
 - (void)startService:(NSString*)name type:(NSString*)type domain:(NSString*)domain;
 - (void)stopService;
 
-//TODO: implement bidirectional flow
-//- (void)sendCommand:(NSString*)command;
+- (void)sendCommand:(NSString*)command toChannel:(SDMMBonjourHelperChannel*)channel;
 
 @end
 
@@ -28,7 +28,7 @@
 @optional
 - (void)bonjourHelperDidStartService:(SDMMBonjourHelper*)bonjourHelper;
 - (void)bonjourHelperDidStopService:(SDMMBonjourHelper*)bonjourHelper;
-- (void)bonjourHelper:(SDMMBonjourHelper*)bonjourHelper didReceiveCommand:(NSString*)command;
+- (void)bonjourHelper:(SDMMBonjourHelper*)bonjourHelper didReceiveCommand:(NSString*)command fromChannel:(SDMMBonjourHelperChannel*)channel;
 
 
 @end

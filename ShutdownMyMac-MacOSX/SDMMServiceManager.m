@@ -6,11 +6,18 @@
 //  Copyright (c) 2015 Jesús. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "SDMMServiceManager.h"
 #import "SDMMBonjourHelper.h"
+#import "SDMMBonjourHelperChannel.h"
 #import "SDMMUserPreferencesManager.h"
 
+static NSString *const SDMMServiceManagerCommandPair = @"PAIR";
 static NSString *const SDMMServiceManagerCommandShutdown = @"SHUTDOWN";
+
+static NSString *const SDMMServiceManagerResponseSuccess = @"SUCCESS";
+static NSString *const SDMMServiceManagerResponseFail = @"FAIL";
+
 static NSString *const SDMMServiceManagerDomain = @"local.";
 static NSString *const SDMMServiceManagerType = @"_shutdownmymac._tcp.";
 
@@ -62,38 +69,68 @@ static SDMMServiceManager* _instance;
 
 #pragma mark Private
 
-- (void)executeShutdownCommand:(NSError**)error
+- (void)executeShutdownCommand:(SDMMBonjourHelperChannel*)channel error:(NSError**)error
 {
+    SDMMUserPreferencesManager *prefsMgr = [SDMMUserPreferencesManager sharedManager];
     NSDictionary *errorDict = nil;
-    
-    NSString *shutdownCommand = @"";
-    if ([[SDMMUserPreferencesManager sharedManager] shutdownType] == SDMMUserPreferenceShutdownTypeAsk) {
-        shutdownCommand = @"tell app \"loginwindow\" to «event aevtrsdn»";
+    if ([prefsMgr isValidDevice:channel.deviceName]) {
+        NSString *shutdownCommand = @"";
+        if ([[SDMMUserPreferencesManager sharedManager] shutdownType] == SDMMUserPreferenceShutdownTypeAsk) {
+            shutdownCommand = @"tell app \"loginwindow\" to «event aevtrsdn»";
+        } else {
+            shutdownCommand = @"tell app \"System Events\" to shut down";
+        }
+        
+        NSAppleScript *appleScript = [[NSAppleScript alloc] initWithSource:shutdownCommand];
+        [appleScript executeAndReturnError:&errorDict];
+        
+        if (errorDict != nil) {
+            *error = [NSError errorWithDomain:SDMMServiceManagerErrorDomain
+                                         code:SDMMServiceManagerErrorCodeCommandError
+                                     userInfo:@{
+                                                SDMMServiceManagerErrorUserInfoCommandKey:SDMMServiceManagerCommandShutdown,
+                                                SDMMServiceManagerErrorUserInfoDataKey:errorDict
+                                                }];
+        }
     } else {
-        shutdownCommand = @"tell app \"System Events\" to shut down";
+        //TODO send error
     }
+}
+
+
+- (void)executePairCommand:(SDMMBonjourHelperChannel*)channel error:(NSError**)error
+{
+    SDMMUserPreferencesManager *prefsMgr = [SDMMUserPreferencesManager sharedManager];
+    NSString *deviceName = channel.deviceName;
     
-    NSAppleScript *appleScript = [[NSAppleScript alloc] initWithSource:shutdownCommand];
-    [appleScript executeAndReturnError:&errorDict];
-    
-    if (errorDict != nil) {
-        *error = [NSError errorWithDomain:SDMMServiceManagerErrorDomain
-                                    code:SDMMServiceManagerErrorCodeCommandError
-                                userInfo:@{
-                                           SDMMServiceManagerErrorUserInfoCommandKey:SDMMServiceManagerCommandShutdown,
-                                           SDMMServiceManagerErrorUserInfoDataKey:errorDict
-                                           }];
+    if ([prefsMgr isValidDevice:deviceName]) {
+        [channel sendCommand:SDMMServiceManagerResponseSuccess];
+    } else {
+        [[AppDelegate currentAppDelegate]
+         showPairingAlertForDevice:channel.deviceName onAccept:^{
+             [prefsMgr addDevice:deviceName];
+             [channel sendCommand:SDMMServiceManagerResponseSuccess];
+         } onCancel:^{
+             [channel sendCommand:SDMMServiceManagerResponseFail];
+         }];
     }
 }
 
 
 #pragma mark SDMMBonjourHelperDelegate
 
-- (void)bonjourHelper:(SDMMBonjourHelper *)bonjourHelper didReceiveCommand:(NSString *)command
+- (void)bonjourHelper:(SDMMBonjourHelper *)bonjourHelper didReceiveCommand:(NSString *)command fromChannel:(SDMMBonjourHelperChannel *)channel
 {
     NSError *error = nil;
+    
     if ([command isEqualToString:SDMMServiceManagerCommandShutdown]) {
-        [self executeShutdownCommand:&error];
+        [self executeShutdownCommand:channel error:&error];
+    } else if ([command hasPrefix:SDMMServiceManagerCommandPair]) {
+        NSString *deviceName = [command stringByReplacingOccurrencesOfString:
+                                [NSString stringWithFormat:@"%@:", SDMMServiceManagerCommandPair]
+                                                                  withString:@""];
+        channel.deviceName = deviceName;
+        [self executePairCommand:channel error:&error];
     } else {
         [NSError errorWithDomain:SDMMServiceManagerErrorDomain
                             code:SDMMServiceManagerErrorCodeCommandError

@@ -12,7 +12,7 @@
 #import "SDMMStatusMenuController.h"
 #import "SDMMUserPreferencesManager.h"
 
-@interface AppDelegate ()
+@interface AppDelegate ()<NSAlertDelegate>
 
 @property (nonatomic, strong) NSWindowController *wcPreferences;
 @property (nonatomic, strong) SDMMStatusMenuController *statusMenuController;
@@ -21,6 +21,11 @@
 @end
 
 @implementation AppDelegate
+
++ (instancetype)currentAppDelegate
+{
+    return (AppDelegate*)([[NSApplication sharedApplication] delegate]);
+}
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
@@ -69,6 +74,29 @@
     [[_wcPreferences window] makeKeyAndOrderFront:sender];
 }
 
+
+- (IBAction)showPairingAlertForDevice:(NSString *)device onAccept:(void(^)(void))onAccept onCancel:(void(^)(void))onCancel
+{
+    NSString *message = NSLocalizedString(@"ALERT_PAIR_MESSAGE", @"");
+    message = [message stringByReplacingOccurrencesOfString:@"<device>" withString:device];
+    
+    NSAlert *alert = [NSAlert new];
+    [alert setMessageText:NSLocalizedString(@"ALERT_PAIR_TITLE", @"")];
+    [alert setInformativeText:message];
+    [alert addButtonWithTitle:NSLocalizedString(@"BTN_ALERT_PAIR_CONTINUE", @"")];
+    [alert addButtonWithTitle:NSLocalizedString(@"BTN_ALERT_PAIR_CANCEL", @"")];
+    [alert setAlertStyle:NSAlertFirstButtonReturn];
+    [alert setDelegate:self];
+    
+    [NSApp activateIgnoringOtherApps:YES];
+    NSModalResponse modalResponse = [alert runModal];
+    
+    if (modalResponse == NSAlertFirstButtonReturn && onAccept != NULL) {
+        onAccept();
+    } else if (onCancel != NULL) {
+        onCancel();
+    }
+}
 
 #pragma mark Private
 

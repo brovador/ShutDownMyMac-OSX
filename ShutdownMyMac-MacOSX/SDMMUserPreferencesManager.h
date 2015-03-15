@@ -22,10 +22,15 @@ typedef NS_ENUM(NSUInteger, SDMMUserPreferenceShutdownType) {
 
 @interface SDMMUserPreferencesManager : NSObject
 
+@property (nonatomic, readonly) NSArray *pairedDevices;
 @property (nonatomic, assign) SDMMUserPreferenceShutdownType shutdownType;
 @property (nonatomic, assign) SDMMUserPreferenceIconPosition iconPosition;
 @property (nonatomic, assign) BOOL runAtStartup;
 
 + (instancetype)sharedManager;
+
+- (void)addDevice:(NSString*)name;
+- (void)removeDevice:(NSString*)name;
+- (BOOL)isValidDevice:(NSString*)name;
 
 @end

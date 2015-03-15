@@ -7,13 +7,12 @@
 //
 
 #import "SDMMBonjourHelper.h"
+#import "SDMMBonjourHelperChannel.h"
 
-@interface SDMMBonjourHelper ()<NSNetServiceDelegate, NSStreamDelegate>
+@interface SDMMBonjourHelper ()<NSNetServiceDelegate>
 
 @property (nonatomic, strong) NSNetService *netService;
-
-@property (nonatomic, strong) NSInputStream *inputStream;
-@property (nonatomic, strong) NSOutputStream *outputStream;
+@property (nonatomic, strong) NSMutableArray *channels;
 
 @end
 
@@ -27,75 +26,87 @@
     [netService setDelegate:self];
     [netService publishWithOptions:NSNetServiceListenForConnections];
     
+    
+    if ([_delegate respondsToSelector:@selector(bonjourHelperDidStartService:)]) {
+        [_delegate bonjourHelperDidStartService:self];
+    }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onChannelConnectionStart:)
+                                                 name:SDMMBonjourHelperChannelStartConnectionNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onChannelConnectionEnd:)
+                                                 name:SDMMBonjourHelperChannelEndConnectionNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onChannelConnectionCommandReceived:)
+                                                 name:SDMMBonjourHelperChannelDidReceiveCommandNotification
+                                               object:nil];
+    
     self.netService = netService;
+    self.channels = [NSMutableArray new];
 }
 
 
 - (void)stopService
 {
     [_netService stop];
-    self.netService = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:SDMMBonjourHelperChannelStartConnectionNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:SDMMBonjourHelperChannelEndConnectionNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:SDMMBonjourHelperChannelDidReceiveCommandNotification object:nil];
     
     if ([_delegate respondsToSelector:@selector(bonjourHelperDidStopService:)]) {
         [_delegate bonjourHelperDidStopService:self];
     }
+    
+    self.netService = nil;
+    self.channels = nil;
 }
-
-
-//- (void)sendCommand:(NSString*)command
-//{
-//    
-//}
 
 #pragma mark NSNetServiceDelegate
 
 - (void)netService:(NSNetService *)sender didAcceptConnectionWithInputStream:(NSInputStream *)inputStream outputStream:(NSOutputStream *)outputStream
 {
-    [inputStream setDelegate:self];
-    [inputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-    [inputStream open];
+    SDMMBonjourHelperChannel *channel = [[SDMMBonjourHelperChannel alloc] initWithNetService:sender
+                                                                                 inputStream:inputStream
+                                                                                outputStream:outputStream
+                                                                                        type:SDMMBonjourHelperChannelTypeReadWrite];
     
-    self.inputStream = inputStream;
-    //TODO: initialize outputStream
-    
-    if ([_delegate respondsToSelector:@selector(bonjourHelperDidStartService:)]) {
-        [_delegate bonjourHelperDidStartService:self];
-    }
+    [self.channels addObject:channel];
 }
 
 
-#pragma mark NSStreamDelegate
-
-- (void)stream:(NSStream *)aStream handleEvent:(NSStreamEvent)eventCode
+- (void)sendCommand:(NSString *)command toChannel:(SDMMBonjourHelperChannel *)channel
 {
-    switch (eventCode) {
-        case NSStreamEventHasBytesAvailable: {
-            
-            uint8_t buf[1024];
-            NSInteger len = 0;
-            
-            len = [(NSInputStream*)aStream read:buf maxLength:1024];
-            
-            if (len > 0) {
-                NSData *data = [NSData dataWithBytes:buf length:len];
-                NSString *message = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                
-                if ([_delegate respondsToSelector:@selector(bonjourHelper:didReceiveCommand:)]) {
-                    [_delegate bonjourHelper:self didReceiveCommand:message];
-                }
-            }
-            
-            break;
-        }
-        case NSStreamEventEndEncountered:
-            break;
-        case NSStreamEventErrorOccurred:
-            break;
-        default:
-            break;
-    }
+    [channel sendCommand:command];
+}
+
+#pragma mark SMMBonjourChannelHelperNotifications
+
+- (void)onChannelConnectionStart:(NSNotification*)notification
+{
+    //SDMMBonjourHelperChannel *channel = notification.object;
+    //TODO: move as available channel?
 }
 
 
+- (void)onChannelConnectionEnd:(NSNotification*)notification
+{
+    SDMMBonjourHelperChannel *channel = notification.object;
+    [self.channels removeObject:channel];
+}
+
+
+- (void)onChannelConnectionCommandReceived:(NSNotification*)notification
+{
+    SDMMBonjourHelperChannel *channel = notification.object;
+    if ([_channels containsObject:channel]) {
+        if ([_delegate respondsToSelector:@selector(bonjourHelper:didReceiveCommand:fromChannel:)]) {
+            NSString *command = notification.userInfo[SDMMBonjourHelperCommandNotificationKey];
+            [_delegate bonjourHelper:self didReceiveCommand:command fromChannel:channel];
+        }
+    }
+}
 
 @end
