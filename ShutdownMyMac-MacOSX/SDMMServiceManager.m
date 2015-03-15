@@ -74,6 +74,9 @@ static SDMMServiceManager* _instance;
     SDMMUserPreferencesManager *prefsMgr = [SDMMUserPreferencesManager sharedManager];
     NSDictionary *errorDict = nil;
     if ([prefsMgr isValidDevice:channel.deviceName]) {
+        
+        [channel sendCommand:SDMMServiceManagerResponseSuccess];
+        
         NSString *shutdownCommand = @"";
         if ([[SDMMUserPreferencesManager sharedManager] shutdownType] == SDMMUserPreferenceShutdownTypeAsk) {
             shutdownCommand = @"tell app \"loginwindow\" to «event aevtrsdn»";
