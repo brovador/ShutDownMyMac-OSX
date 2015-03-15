@@ -123,7 +123,7 @@ static NSInteger const TagShutdownTypeNoAsk = 1;
     [_btnStartupAtLogin setTitle:NSLocalizedString(@"START_ON_LOGIN_RIGHT", @"")];
     [_tfStartOnLoginDescription setStringValue:NSLocalizedString(@"START_ON_LOGIN_DESCRIPTION", @"")];
     
-    [_tfIconPositionLeft setStringValue:NSLocalizedString(@"ICON_POSITION_DESCRIPTION", @"")];
+    [_tfIconPositionLeft setStringValue:NSLocalizedString(@"ICON_POSITION_LEFT", @"")];
     [_bcIconPositionDock setTitle:NSLocalizedString(@"ICON_POSITION_DOCK", @"")];
     [_bcIconPositionMenuBar setTitle:NSLocalizedString(@"ICON_POSITION_MENU_BAR", @"")];
     

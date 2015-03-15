@@ -15,6 +15,7 @@
 		1C760C4F1AB5ABCE004E942D /* SDMMPreferencesAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C760C4E1AB5ABCE004E942D /* SDMMPreferencesAboutViewController.m */; };
 		1C760C521AB5AE26004E942D /* NSAttributedString+Hyperlink.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C760C511AB5AE26004E942D /* NSAttributedString+Hyperlink.m */; };
 		1C760C551AB5B502004E942D /* SDMMPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C760C541AB5B502004E942D /* SDMMPreferencesWindowController.m */; };
+		1C760C581AB5B623004E942D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1C760C561AB5B623004E942D /* Localizable.strings */; };
 		1C909ABC1AAF801D00D985AF /* DockMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C909ABB1AAF801D00D985AF /* DockMenu.xib */; };
 		1C909ABF1AAF810A00D985AF /* SDMMDockMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C909ABE1AAF810A00D985AF /* SDMMDockMenuController.m */; };
 		1CB225321AB42C8800E5BC5B /* SDMMBonjourHelperChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB225311AB42C8800E5BC5B /* SDMMBonjourHelperChannel.m */; };
@@ -44,6 +45,7 @@
 		1C760C511AB5AE26004E942D /* NSAttributedString+Hyperlink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+Hyperlink.m"; sourceTree = "<group>"; };
 		1C760C531AB5B502004E942D /* SDMMPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDMMPreferencesWindowController.h; sourceTree = "<group>"; };
 		1C760C541AB5B502004E942D /* SDMMPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDMMPreferencesWindowController.m; sourceTree = "<group>"; };
+		1C760C591AB5B630004E942D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1C909ABB1AAF801D00D985AF /* DockMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DockMenu.xib; sourceTree = "<group>"; };
 		1C909ABD1AAF810A00D985AF /* SDMMDockMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDMMDockMenuController.h; sourceTree = "<group>"; };
 		1C909ABE1AAF810A00D985AF /* SDMMDockMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDMMDockMenuController.m; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 		1CC766AE1AA31DC200BF3D63 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1C760C561AB5B623004E942D /* Localizable.strings */,
 				1CC766AF1AA31DC200BF3D63 /* Info.plist */,
 				1CC766B31AA31DC200BF3D63 /* main.m */,
 			);
@@ -259,6 +262,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C760C581AB5B623004E942D /* Localizable.strings in Resources */,
 				1CC766B91AA31DC200BF3D63 /* Images.xcassets in Resources */,
 				1C57437E1AACDD5E0054451B /* StatusItemMenu.xib in Resources */,
 				1CC766BC1AA31DC200BF3D63 /* Main.storyboard in Resources */,
@@ -294,6 +298,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		1C760C561AB5B623004E942D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1C760C591AB5B630004E942D /* Base */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		1CC766BA1AA31DC200BF3D63 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
