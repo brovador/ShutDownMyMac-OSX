@@ -16,14 +16,15 @@
 		1C760C521AB5AE26004E942D /* NSAttributedString+Hyperlink.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C760C511AB5AE26004E942D /* NSAttributedString+Hyperlink.m */; };
 		1C760C551AB5B502004E942D /* SDMMPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C760C541AB5B502004E942D /* SDMMPreferencesWindowController.m */; };
 		1C760C581AB5B623004E942D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1C760C561AB5B623004E942D /* Localizable.strings */; };
+		1C7D76C61AB7815F00F79D14 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C7D76C51AB7815F00F79D14 /* Images.xcassets */; };
 		1C909ABC1AAF801D00D985AF /* DockMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C909ABB1AAF801D00D985AF /* DockMenu.xib */; };
 		1C909ABF1AAF810A00D985AF /* SDMMDockMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C909ABE1AAF810A00D985AF /* SDMMDockMenuController.m */; };
+		1C92CD841AB77BD4001C1977 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C92CD831AB77BD4001C1977 /* Icon.png */; };
 		1CB225321AB42C8800E5BC5B /* SDMMBonjourHelperChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB225311AB42C8800E5BC5B /* SDMMBonjourHelperChannel.m */; };
 		1CBF39591AAC3ADA001525D6 /* LSHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CBF39581AAC3ADA001525D6 /* LSHelper.m */; };
 		1CC766B21AA31DC200BF3D63 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC766B11AA31DC200BF3D63 /* AppDelegate.m */; };
 		1CC766B41AA31DC200BF3D63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC766B31AA31DC200BF3D63 /* main.m */; };
 		1CC766B71AA31DC200BF3D63 /* SDMMPreferencesGeneralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC766B61AA31DC200BF3D63 /* SDMMPreferencesGeneralViewController.m */; };
-		1CC766B91AA31DC200BF3D63 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CC766B81AA31DC200BF3D63 /* Images.xcassets */; };
 		1CC766BC1AA31DC200BF3D63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CC766BA1AA31DC200BF3D63 /* Main.storyboard */; };
 		1CC766D31AA31E3E00BF3D63 /* SDMMServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC766D21AA31E3E00BF3D63 /* SDMMServiceManager.m */; };
 		1CE89ED21AAC866800735C82 /* SDMMPreferencesRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE89ED11AAC866800735C82 /* SDMMPreferencesRootViewController.m */; };
@@ -45,22 +46,23 @@
 		1C760C511AB5AE26004E942D /* NSAttributedString+Hyperlink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+Hyperlink.m"; sourceTree = "<group>"; };
 		1C760C531AB5B502004E942D /* SDMMPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDMMPreferencesWindowController.h; sourceTree = "<group>"; };
 		1C760C541AB5B502004E942D /* SDMMPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDMMPreferencesWindowController.m; sourceTree = "<group>"; };
-		1C760C591AB5B630004E942D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1C760C591AB5B630004E942D /* Base */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1C7D76C51AB7815F00F79D14 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1C909ABB1AAF801D00D985AF /* DockMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DockMenu.xib; sourceTree = "<group>"; };
 		1C909ABD1AAF810A00D985AF /* SDMMDockMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDMMDockMenuController.h; sourceTree = "<group>"; };
 		1C909ABE1AAF810A00D985AF /* SDMMDockMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDMMDockMenuController.m; sourceTree = "<group>"; };
+		1C92CD831AB77BD4001C1977 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		1CB225301AB42C8800E5BC5B /* SDMMBonjourHelperChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDMMBonjourHelperChannel.h; sourceTree = "<group>"; };
 		1CB225311AB42C8800E5BC5B /* SDMMBonjourHelperChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDMMBonjourHelperChannel.m; sourceTree = "<group>"; };
 		1CBF39571AAC3ADA001525D6 /* LSHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSHelper.h; sourceTree = "<group>"; };
 		1CBF39581AAC3ADA001525D6 /* LSHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSHelper.m; sourceTree = "<group>"; };
-		1CC766AB1AA31DC200BF3D63 /* ShutDownMyMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShutDownMyMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CC766AB1AA31DC200BF3D63 /* ShutdownMyMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShutdownMyMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CC766AF1AA31DC200BF3D63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CC766B01AA31DC200BF3D63 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1CC766B11AA31DC200BF3D63 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1CC766B31AA31DC200BF3D63 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1CC766B51AA31DC200BF3D63 /* SDMMPreferencesGeneralViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDMMPreferencesGeneralViewController.h; sourceTree = "<group>"; };
 		1CC766B61AA31DC200BF3D63 /* SDMMPreferencesGeneralViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SDMMPreferencesGeneralViewController.m; sourceTree = "<group>"; };
-		1CC766B81AA31DC200BF3D63 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1CC766BB1AA31DC200BF3D63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1CC766C61AA31DC200BF3D63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CC766C71AA31DC200BF3D63 /* ShutdownMyMac_MacOSXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShutdownMyMac_MacOSXTests.m; sourceTree = "<group>"; };
@@ -145,7 +147,7 @@
 		1CC766AC1AA31DC200BF3D63 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1CC766AB1AA31DC200BF3D63 /* ShutDownMyMac.app */,
+				1CC766AB1AA31DC200BF3D63 /* ShutdownMyMac.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -156,9 +158,10 @@
 				1C5743771AACB75E0054451B /* Views */,
 				1C5743791AACB77D0054451B /* Utils */,
 				1CC766D41AA31E4500BF3D63 /* Managers */,
+				1C92CD831AB77BD4001C1977 /* Icon.png */,
+				1C7D76C51AB7815F00F79D14 /* Images.xcassets */,
 				1CC766B01AA31DC200BF3D63 /* AppDelegate.h */,
 				1CC766B11AA31DC200BF3D63 /* AppDelegate.m */,
-				1CC766B81AA31DC200BF3D63 /* Images.xcassets */,
 				1CC766BA1AA31DC200BF3D63 /* Main.storyboard */,
 				1C57437D1AACDD5E0054451B /* StatusItemMenu.xib */,
 				1C909ABB1AAF801D00D985AF /* DockMenu.xib */,
@@ -208,9 +211,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1CC766AA1AA31DC200BF3D63 /* ShutDownMyMac */ = {
+		1CC766AA1AA31DC200BF3D63 /* ShutdownMyMac */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1CC766CB1AA31DC200BF3D63 /* Build configuration list for PBXNativeTarget "ShutDownMyMac" */;
+			buildConfigurationList = 1CC766CB1AA31DC200BF3D63 /* Build configuration list for PBXNativeTarget "ShutdownMyMac" */;
 			buildPhases = (
 				1CC766A71AA31DC200BF3D63 /* Sources */,
 				1CC766A81AA31DC200BF3D63 /* Frameworks */,
@@ -220,9 +223,9 @@
 			);
 			dependencies = (
 			);
-			name = ShutDownMyMac;
+			name = ShutdownMyMac;
 			productName = "ShutdownMyMac-MacOSX";
-			productReference = 1CC766AB1AA31DC200BF3D63 /* ShutDownMyMac.app */;
+			productReference = 1CC766AB1AA31DC200BF3D63 /* ShutdownMyMac.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -252,7 +255,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1CC766AA1AA31DC200BF3D63 /* ShutDownMyMac */,
+				1CC766AA1AA31DC200BF3D63 /* ShutdownMyMac */,
 			);
 		};
 /* End PBXProject section */
@@ -262,9 +265,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C92CD841AB77BD4001C1977 /* Icon.png in Resources */,
 				1C760C581AB5B623004E942D /* Localizable.strings in Resources */,
-				1CC766B91AA31DC200BF3D63 /* Images.xcassets in Resources */,
 				1C57437E1AACDD5E0054451B /* StatusItemMenu.xib in Resources */,
+				1C7D76C61AB7815F00F79D14 /* Images.xcassets in Resources */,
 				1CC766BC1AA31DC200BF3D63 /* Main.storyboard in Resources */,
 				1C909ABC1AAF801D00D985AF /* DockMenu.xib in Resources */,
 			);
@@ -354,6 +358,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = ShutdownMyMac;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -389,6 +394,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = ShutdownMyMac;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -427,7 +433,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1CC766CB1AA31DC200BF3D63 /* Build configuration list for PBXNativeTarget "ShutDownMyMac" */ = {
+		1CC766CB1AA31DC200BF3D63 /* Build configuration list for PBXNativeTarget "ShutdownMyMac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1CC766CC1AA31DC200BF3D63 /* Debug */,

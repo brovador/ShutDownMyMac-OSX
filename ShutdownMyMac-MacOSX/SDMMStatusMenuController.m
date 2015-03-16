@@ -35,7 +35,7 @@
         self.topNibObjects = topNibObjects;
         
         self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
-        _statusItem.title = @"SMM";
+        [_statusItem setImage:[NSImage imageNamed:@"StatusIcon"]];
         [_statusItem setMenu:_menu];
         
         [self _localizeView];

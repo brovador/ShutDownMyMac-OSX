@@ -121,7 +121,7 @@
         <!--Tab View Controller-->
         <scene sceneID="8ie-g4-Opa">
             <objects>
-                <tabViewController storyboardIdentifier="VCPreferencesTabs" selectedTabViewItemIndex="1" id="fue-Qv-rLX" sceneMemberID="viewController">
+                <tabViewController storyboardIdentifier="VCPreferencesTabs" selectedTabViewItemIndex="0" id="fue-Qv-rLX" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem identifier="" id="rYt-bE-Lu2"/>
                         <tabViewItem id="5Jh-Av-0s2"/>
@@ -347,6 +347,11 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="ccF-bU-xXw">
+                                <rect key="frame" x="126" y="142" width="158" height="158"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="AboutIcon" id="3fu-KM-nbm"/>
+                            </imageView>
                         </subviews>
                     </view>
                     <connections>
@@ -458,4 +463,7 @@
             <point key="canvasLocation" x="1266" y="1252"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="AboutIcon" width="128" height="128"/>
+    </resources>
 </document>
