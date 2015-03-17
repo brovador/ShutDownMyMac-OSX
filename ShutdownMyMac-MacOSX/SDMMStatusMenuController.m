@@ -35,7 +35,11 @@
         self.topNibObjects = topNibObjects;
         
         self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
-        [_statusItem setImage:[NSImage imageNamed:@"StatusIcon"]];
+        
+        NSImage *iconImage = [NSImage imageNamed:@"StatusIcon"];
+        [iconImage setTemplate:YES];
+        
+        [_statusItem setImage:iconImage];
         [_statusItem setMenu:_menu];
         
         [self _localizeView];
