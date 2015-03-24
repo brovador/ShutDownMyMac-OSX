@@ -11,10 +11,12 @@
 #import "SDMMServiceManager.h"
 #import "SDMMStatusMenuController.h"
 #import "SDMMUserPreferencesManager.h"
+#import "SDMMPreferencesRootViewController.h"
+#import "SDMMPreferencesWindowController.h"
 
 @interface AppDelegate ()<NSAlertDelegate>
 
-@property (nonatomic, strong) NSWindowController *wcPreferences;
+@property (nonatomic, strong) SDMMPreferencesWindowController *wcPreferences;
 @property (nonatomic, strong) SDMMStatusMenuController *statusMenuController;
 @property (nonatomic, strong) SDMMDockMenuController *dockMenuController;
 
@@ -65,7 +67,7 @@
 {
     if (_wcPreferences == nil) {
         NSStoryboard *mainStoryBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
-        NSWindowController *wcPreferences = [mainStoryBoard instantiateControllerWithIdentifier:@"WCPreferences"];
+        SDMMPreferencesWindowController *wcPreferences = [mainStoryBoard instantiateControllerWithIdentifier:@"WCPreferences"];
         self.wcPreferences = wcPreferences;
     }
     
@@ -92,6 +94,8 @@
     NSModalResponse modalResponse = [alert runModal];
     
     if (modalResponse == NSAlertFirstButtonReturn && onAccept != NULL) {
+        [self showPreferencesWindow:self];
+        [_wcPreferences.vcRoot showTab:SDMMPreferencesTabDevices];
         onAccept();
     } else if (onCancel != NULL) {
         onCancel();

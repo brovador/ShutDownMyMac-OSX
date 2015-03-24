@@ -8,6 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
+extern const NSInteger SDMMPreferencesTabGeneral;
+extern const NSInteger SDMMPreferencesTabDevices;
+extern const NSInteger SDMMPreferencesTabAbout;
+
 @interface SDMMPreferencesRootViewController : NSViewController
+
+- (void)showTab:(NSInteger)tabIndex;
 
 @end

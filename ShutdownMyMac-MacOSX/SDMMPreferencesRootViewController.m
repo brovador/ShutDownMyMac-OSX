@@ -8,8 +8,13 @@
 
 #import "SDMMPreferencesRootViewController.h"
 
+const NSInteger SDMMPreferencesTabGeneral = 0;
+const NSInteger SDMMPreferencesTabDevices = 1;
+const NSInteger SDMMPreferencesTabAbout = 2;
+
 @interface SDMMPreferencesRootViewController ()
 
+@property (nonatomic, assign) IBOutlet NSTabViewController *vcPreferencesTabs;
 @property (nonatomic, assign) IBOutlet NSView *vPreferencesContainer;
 
 @end
@@ -19,10 +24,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSViewController *vcPreferences = [self.storyboard instantiateControllerWithIdentifier:@"VCPreferencesTabs"];
-    vcPreferences.view.frame = _vPreferencesContainer.bounds;
-    [self addChildViewController:vcPreferences];
-    [_vPreferencesContainer addSubview:vcPreferences.view];
+    self.vcPreferencesTabs = [self.storyboard instantiateControllerWithIdentifier:@"VCPreferencesTabs"];
+    _vcPreferencesTabs.view.frame = _vPreferencesContainer.bounds;
+    [self addChildViewController:_vcPreferencesTabs];
+    [_vPreferencesContainer addSubview:_vcPreferencesTabs.view];
+}
+
+
+- (void)showTab:(NSInteger)tabIndex
+{
+    [_vcPreferencesTabs setSelectedTabViewItemIndex:tabIndex];
 }
 
 @end

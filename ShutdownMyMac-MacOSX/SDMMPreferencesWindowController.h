@@ -8,6 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class SDMMPreferencesRootViewController;
+
 @interface SDMMPreferencesWindowController : NSWindowController
+
+@property (nonatomic, readonly) SDMMPreferencesRootViewController *vcRoot;
 
 @end
