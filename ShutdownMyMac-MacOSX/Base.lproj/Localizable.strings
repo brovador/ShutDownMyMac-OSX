@@ -56,7 +56,7 @@
 "SHUTDOWN_TYPE_ASK_DESCRIPTION" = "The application will ask before shutdown";
 
 /* No comment provided by engineer. */
-"SHUTDOWN_TYPE_LEFT" = "Shutdown type";
+"SHUTDOWN_TYPE_LEFT" = "Shutdown type:";
 
 /* No comment provided by engineer. */
 "SHUTDOWN_TYPE_NO_ASK" = "No ask";
@@ -71,7 +71,7 @@
 "START_ON_LOGIN_LEFT" = "Always on:";
 
 /* No comment provided by engineer. */
-"START_ON_LOGIN_RIGHT" = "Start SMM on login";
+"START_ON_LOGIN_RIGHT" = "Start on login";
 
 /* No comment provided by engineer. */
 "TAB_ABOUT" = "About";
@@ -83,5 +83,5 @@
 "TAB_GENERAL" = "General";
 
 /* No comment provided by engineer. */
-"WINDOW_TITLE_PREFERENCES" = "SMM Preferences";
+"WINDOW_TITLE_PREFERENCES" = "ShutdownMyMac Preferences";
 
