@@ -46,6 +46,11 @@
     NSURL *url = [NSURL URLWithString:@"http://github.com/brovador"];
     NSAttributedString *creatorString = [NSAttributedString hyperlinkFromString:@"brovador" withURL:url];
     [createdByString appendAttributedString:creatorString];
+    
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setAlignment:NSCenterTextAlignment];
+    [createdByString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, createdByString.string.length)];
+    
     [_tfCreatedBy setAllowsEditingTextAttributes: YES];
     [_tfCreatedBy setSelectable: YES];
     [_tfCreatedBy setAttributedStringValue:createdByString];
