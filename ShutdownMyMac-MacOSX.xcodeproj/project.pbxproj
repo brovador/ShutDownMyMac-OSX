@@ -64,8 +64,6 @@
 		1CC766B51AA31DC200BF3D63 /* SDMMPreferencesGeneralViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDMMPreferencesGeneralViewController.h; sourceTree = "<group>"; };
 		1CC766B61AA31DC200BF3D63 /* SDMMPreferencesGeneralViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SDMMPreferencesGeneralViewController.m; sourceTree = "<group>"; };
 		1CC766BB1AA31DC200BF3D63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		1CC766C61AA31DC200BF3D63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1CC766C71AA31DC200BF3D63 /* ShutdownMyMac_MacOSXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShutdownMyMac_MacOSXTests.m; sourceTree = "<group>"; };
 		1CC766D11AA31E3E00BF3D63 /* SDMMServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDMMServiceManager.h; sourceTree = "<group>"; };
 		1CC766D21AA31E3E00BF3D63 /* SDMMServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDMMServiceManager.m; sourceTree = "<group>"; };
 		1CE89ED01AAC866800735C82 /* SDMMPreferencesRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDMMPreferencesRootViewController.h; sourceTree = "<group>"; };
@@ -139,7 +137,6 @@
 			isa = PBXGroup;
 			children = (
 				1CC766AD1AA31DC200BF3D63 /* ShutdownMyMac-MacOSX */,
-				1CC766C41AA31DC200BF3D63 /* ShutdownMyMac-MacOSXTests */,
 				1CC766AC1AA31DC200BF3D63 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -176,23 +173,6 @@
 				1C760C561AB5B623004E942D /* Localizable.strings */,
 				1CC766AF1AA31DC200BF3D63 /* Info.plist */,
 				1CC766B31AA31DC200BF3D63 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		1CC766C41AA31DC200BF3D63 /* ShutdownMyMac-MacOSXTests */ = {
-			isa = PBXGroup;
-			children = (
-				1CC766C71AA31DC200BF3D63 /* ShutdownMyMac_MacOSXTests.m */,
-				1CC766C51AA31DC200BF3D63 /* Supporting Files */,
-			);
-			path = "ShutdownMyMac-MacOSXTests";
-			sourceTree = "<group>";
-		};
-		1CC766C51AA31DC200BF3D63 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				1CC766C61AA31DC200BF3D63 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
