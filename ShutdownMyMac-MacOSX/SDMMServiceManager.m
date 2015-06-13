@@ -5,30 +5,34 @@
 //  Created by Jesús on 1/3/15.
 //  Copyright (c) 2015 Jesús. All rights reserved.
 //
-#include <CoreFoundation/CoreFoundation.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
 
+#import "AppDelegate.h"
 #import "SDMMServiceManager.h"
+#import "SDMMBonjourHelper.h"
+#import "SDMMBonjourHelperChannel.h"
+#import "SDMMUserPreferencesManager.h"
 
-static NSString *const SMSERVICE_COMMAND_SHUTDOWN = @"SHUTDOWN";
+static NSString *const SDMMServiceManagerCommandPair = @"PAIR";
+static NSString *const SDMMServiceManagerCommandShutdown = @"SHUTDOWN";
 
-static NSString *const ShutdownServiceDomain = @"local.";
-static NSString *const ShutdownServiceType = @"_shutdownmymac._tcp.";
+static NSString *const SDMMServiceManagerResponseSuccess = @"SUCCESS";
+static NSString *const SDMMServiceManagerResponseFail = @"FAIL";
+
+static NSString *const SDMMServiceManagerDomain = @"local.";
+static NSString *const SDMMServiceManagerType = @"_shutdownmymac._tcp.";
+
+NSString *const SDMMServiceManagerErrorDomain = @"SDMMServiceManagerErrorDomain";
+NSInteger const SDMMServiceManagerErrorCodeCommandNotFound = 0;
+NSInteger const SDMMServiceManagerErrorCodeCommandError = 1;
+
+NSString *const SDMMServiceManagerErrorUserInfoCommandKey = @"command";
+NSString *const SDMMServiceManagerErrorUserInfoDataKey = @"data";
+
 static SDMMServiceManager* _instance;
 
-void handleConnect(CFSocketRef s, CFSocketCallBackType type, CFDataRef address, const void *data, void *info)
-{
-    NSLog(@"SOCKET HANDLE CONNECT");
-}
+@interface SDMMServiceManager () <SDMMBonjourHelperDelegate>
 
-
-@interface SDMMServiceManager () <NSNetServiceDelegate, NSStreamDelegate>
-
-@property (nonatomic, strong) NSNetService *netService;
-
-@property (nonatomic, strong) NSInputStream *inputStream;
-@property (nonatomic, strong) NSOutputStream *outputStream;
+@property (nonatomic, strong) SDMMBonjourHelper *bonjourHelper;
 
 @end
 
@@ -43,92 +47,105 @@ void handleConnect(CFSocketRef s, CFSocketCallBackType type, CFDataRef address, 
     return _instance;
 }
 
+#pragma mark Public
 
 - (void)startService
 {
-    NSNetService *netService = [[NSNetService alloc] initWithDomain:ShutdownServiceDomain
-                                                               type:ShutdownServiceType
-                                                               name:[[NSHost currentHost] localizedName]];
-    [netService setDelegate:self];
-    [netService publishWithOptions:NSNetServiceListenForConnections];
+    SDMMBonjourHelper *bonjourHelper = [SDMMBonjourHelper new];
+    [bonjourHelper setDelegate:self];
+    [bonjourHelper startService:[[NSHost currentHost] localizedName]
+                           type:SDMMServiceManagerType
+                         domain:SDMMServiceManagerDomain];
     
-    self.netService = netService;
+    self.bonjourHelper = bonjourHelper;
 }
 
 
 - (void)stopService
 {
-    [self.netService stop];
+    [self.bonjourHelper stopService];
 }
 
-#pragma mark NSNetServiceDelegate
 
-- (void)netServiceDidPublish:(NSNetService *)sender
+#pragma mark Private
+
+- (void)executeShutdownCommand:(SDMMBonjourHelperChannel*)channel error:(NSError**)error
 {
-    //TODO notify publish
+    SDMMUserPreferencesManager *prefsMgr = [SDMMUserPreferencesManager sharedManager];
+    NSDictionary *errorDict = nil;
+    if ([prefsMgr isValidDevice:channel.deviceName]) {
+        
+        [channel sendCommand:SDMMServiceManagerResponseSuccess];
+        
+        NSString *shutdownCommand = @"";
+        if ([[SDMMUserPreferencesManager sharedManager] shutdownType] == SDMMUserPreferenceShutdownTypeAsk) {
+            shutdownCommand = @"tell app \"loginwindow\" to «event aevtrsdn»";
+        } else {
+            shutdownCommand = @"tell app \"System Events\" to shut down";
+        }
+        
+        NSAppleScript *appleScript = [[NSAppleScript alloc] initWithSource:shutdownCommand];
+        [appleScript executeAndReturnError:&errorDict];
+        
+        if (errorDict != nil) {
+            *error = [NSError errorWithDomain:SDMMServiceManagerErrorDomain
+                                         code:SDMMServiceManagerErrorCodeCommandError
+                                     userInfo:@{
+                                                SDMMServiceManagerErrorUserInfoCommandKey:SDMMServiceManagerCommandShutdown,
+                                                SDMMServiceManagerErrorUserInfoDataKey:errorDict
+                                                }];
+        }
+    } else {
+        //TODO send error
+    }
 }
 
-- (void)netService:(NSNetService *)sender didNotPublish:(NSDictionary *)errorDict
-{
-    //TODO notify did not publish
-}
 
-- (void)netService:(NSNetService *)sender didAcceptConnectionWithInputStream:(NSInputStream *)inputStream outputStream:(NSOutputStream *)outputStream
+- (void)executePairCommand:(SDMMBonjourHelperChannel*)channel error:(NSError**)error
 {
-    [inputStream setDelegate:self];
-    [inputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-    [inputStream open];
+    SDMMUserPreferencesManager *prefsMgr = [SDMMUserPreferencesManager sharedManager];
+    NSString *deviceName = channel.deviceName;
     
-    self.inputStream = inputStream;
+    if ([prefsMgr isValidDevice:deviceName]) {
+        [channel sendCommand:SDMMServiceManagerResponseSuccess];
+    } else {
+        [[AppDelegate currentAppDelegate]
+         showPairingAlertForDevice:channel.deviceName onAccept:^{
+             [prefsMgr addDevice:deviceName];
+             [channel sendCommand:SDMMServiceManagerResponseSuccess];
+         } onCancel:^{
+             [channel sendCommand:SDMMServiceManagerResponseFail];
+         }];
+    }
 }
 
-- (void)parseCommand:(NSString*)command
+
+#pragma mark SDMMBonjourHelperDelegate
+
+- (void)bonjourHelper:(SDMMBonjourHelper *)bonjourHelper didReceiveCommand:(NSString *)command fromChannel:(SDMMBonjourHelperChannel *)channel
 {
-    NSDictionary *error = nil;
-    if ([SMSERVICE_COMMAND_SHUTDOWN isEqualToString:command]) {
-        [self executeShutdownCommand:&error];
+    NSError *error = nil;
+    
+    if ([command isEqualToString:SDMMServiceManagerCommandShutdown]) {
+        [self executeShutdownCommand:channel error:&error];
+    } else if ([command hasPrefix:SDMMServiceManagerCommandPair]) {
+        NSString *deviceName = [command stringByReplacingOccurrencesOfString:
+                                [NSString stringWithFormat:@"%@:", SDMMServiceManagerCommandPair]
+                                                                  withString:@""];
+        channel.deviceName = deviceName;
+        [self executePairCommand:channel error:&error];
+    } else {
+        [NSError errorWithDomain:SDMMServiceManagerErrorDomain
+                            code:SDMMServiceManagerErrorCodeCommandError
+                        userInfo:@{SDMMServiceManagerErrorUserInfoCommandKey : command}];
     }
     
     if (error != nil) {
-        NSLog(@"COMMAND ERROR");
+        NSLog(@"ERROR PARSING COMMAND: %@", command);
     }
 }
 
-- (void)executeShutdownCommand:(NSDictionary**)error
-{
-    NSAppleScript *appleScript = [[NSAppleScript alloc] initWithSource:@"tell app \"loginwindow\" to «event aevtrsdn»"];
-    [appleScript executeAndReturnError:error];
-}
 
-#pragma mark NSStreamDelegate
 
-- (void)stream:(NSStream *)aStream handleEvent:(NSStreamEvent)eventCode
-{
-    switch (eventCode) {
-        case NSStreamEventHasBytesAvailable: {
-            
-            uint8_t buf[1024];
-            NSInteger len = 0;
-            
-            len = [(NSInputStream*)aStream read:buf maxLength:1024];
-            
-            if (len > 0) {
-                NSData *data = [NSData dataWithBytes:buf length:len];
-                NSString *message = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                [self parseCommand:message];
-            }
-            
-            break;
-        }
-        case NSStreamEventEndEncountered:
-            NSLog(@"EVENT END ENCOUNTERED");
-            break;
-        case NSStreamEventErrorOccurred:
-            NSLog(@"EVENT ERROR OCURRED");
-            break;
-        default:
-            break;
-    }
-}
 
 @end

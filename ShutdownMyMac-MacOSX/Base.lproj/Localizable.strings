@@ -1,0 +1,87 @@
+﻿/* No comment provided by engineer. */
+"ALERT_PAIR_MESSAGE" = "Do you want to accept commands from the device <device>?";
+
+/* No comment provided by engineer. */
+"ALERT_PAIR_TITLE" = "Pairing new device";
+
+/* No comment provided by engineer. */
+"BTN_ALERT_PAIR_CANCEL" = "Cancel";
+
+/* No comment provided by engineer. */
+"BTN_ALERT_PAIR_CONTINUE" = "Continue";
+
+/* No comment provided by engineer. */
+"BTN_REMOVE_SELECTED" = "Remove selected";
+
+/* No comment provided by engineer. */
+"CREATED_BY" = "Created by ";
+
+/* No comment provided by engineer. */
+"ICON_POSITION_LEFT" = "Icon position:";
+
+/* No comment provided by engineer. */
+"ICON_POSITION_DOCK" = "Dock";
+
+/* No comment provided by engineer. */
+"ICON_POSITION_DOCK_DESCRIPTION" = "The icon will be shown in the dock menu in the next launch.";
+
+/* No comment provided by engineer. */
+"ICON_POSITION_MENU_BAR" = "Menu bar";
+
+/* No comment provided by engineer. */
+"ICON_POSITION_TOP_MENU_DESCRIPTION" = "The icon will be shown in the top menu in the next launch.";
+
+/* No comment provided by engineer. */
+"MI_LAUNCH_AT_LOGIN" = "Launch at login";
+
+/* No comment provided by engineer. */
+"MI_PREFERENCES" = "Preferences";
+
+/* No comment provided by engineer. */
+"MI_QUIT" = "Quit";
+
+/* No comment provided by engineer. */
+"MI_SHUTDOWN_TYPE" = "Shutdown type";
+
+/* No comment provided by engineer. */
+"MI_SHUTDOWN_TYPE_ASK" = "Ask";
+
+/* No comment provided by engineer. */
+"MI_SHUTDOWN_TYPE_NO_ASK" = "No ask";
+
+/* No comment provided by engineer. */
+"SHUTDOWN_TYPE_ASK" = "Ask";
+
+/* No comment provided by engineer. */
+"SHUTDOWN_TYPE_ASK_DESCRIPTION" = "The application will ask before shutdown";
+
+/* No comment provided by engineer. */
+"SHUTDOWN_TYPE_LEFT" = "Shutdown type:";
+
+/* No comment provided by engineer. */
+"SHUTDOWN_TYPE_NO_ASK" = "No ask";
+
+/* No comment provided by engineer. */
+"SHUTDOWN_TYPE_NO_ASK_DESCRIPTION" = "The application won't ask before shutdown";
+
+/* No comment provided by engineer. */
+"START_ON_LOGIN_DESCRIPTION" = "The application will start automatically after login";
+
+/* No comment provided by engineer. */
+"START_ON_LOGIN_LEFT" = "Always on:";
+
+/* No comment provided by engineer. */
+"START_ON_LOGIN_RIGHT" = "Start on login";
+
+/* No comment provided by engineer. */
+"TAB_ABOUT" = "About";
+
+/* No comment provided by engineer. */
+"TAB_DEVICES" = "Devices";
+
+/* No comment provided by engineer. */
+"TAB_GENERAL" = "General";
+
+/* No comment provided by engineer. */
+"WINDOW_TITLE_PREFERENCES" = "ShutdownMyMac Preferences";
+

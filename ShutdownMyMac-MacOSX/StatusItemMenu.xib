@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6751" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6751"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="SDMMStatusMenuController">
+            <connections>
+                <outlet property="menu" destination="er2-gj-OfJ" id="sUv-HM-PiR"/>
+                <outlet property="miLaunchAtLogin" destination="Wjl-2W-ekb" id="Qhx-x5-y0E"/>
+                <outlet property="miPreferences" destination="YKg-OT-Cvb" id="hnK-Sz-Sgd"/>
+                <outlet property="miQuit" destination="MAO-Ng-nvH" id="ln1-GP-udJ"/>
+                <outlet property="miShutdownType" destination="Xda-iw-SOI" id="Q2t-oN-VAN"/>
+                <outlet property="miShutdownTypeAsk" destination="GOB-QP-nfw" id="DnQ-r9-EUZ"/>
+                <outlet property="miShutdownTypeNoAsk" destination="PNh-J3-gxv" id="8Zp-If-Nbz"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <menu title="StatusItemMenu" id="er2-gj-OfJ">
+            <items>
+                <menuItem title="Launch at login" state="on" id="Wjl-2W-ekb">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="toggleLaunchAtLogin:" target="-2" id="g0O-Zj-dBk"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Shutdown type" tag="1" id="Xda-iw-SOI">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Shutdown type" id="wpf-oh-maC">
+                        <items>
+                            <menuItem title="Ask" state="on" tag="3" id="GOB-QP-nfw">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="setShutdownTypeAsk:" target="-2" id="G6a-hU-JqB"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="No ask" tag="4" id="PNh-J3-gxv">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="setShutdownTypeNoAsk:" target="-2" id="tHt-yj-9md"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="ur2-Zw-ifn"/>
+                <menuItem title="Preferences" tag="2" id="YKg-OT-Cvb">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="showPreferences:" target="-2" id="QKP-By-j3e"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="a9v-3x-adO"/>
+                <menuItem title="Quit" tag="2" id="MAO-Ng-nvH" userLabel="Quit">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="quitApplication:" target="-2" id="LrB-qJ-1tE"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <connections>
+                <outlet property="delegate" destination="-2" id="sLD-Oq-oIU"/>
+            </connections>
+            <point key="canvasLocation" x="-556.5" y="-393.5"/>
+        </menu>
+    </objects>
+</document>

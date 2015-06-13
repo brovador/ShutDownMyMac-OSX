@@ -10,6 +10,10 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
++ (instancetype)currentAppDelegate;
+
+- (IBAction)showPairingAlertForDevice:(NSString *)device onAccept:(void(^)(void))onAccept onCancel:(void(^)(void))onCancel;
+- (IBAction)showPreferencesWindow:(id)sender;
 
 @end
 
